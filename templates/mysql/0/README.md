@@ -12,3 +12,7 @@ Includes the following services:
 - Load Balancer
 - MySQL Server
 - MySQL Data (sidekick to the server)
+
+## Usage
+
+The minimum configuration option(s) required to launch the stack is the MySQL Public LB Port and MySQL Root Password. See the description of each option for more information.
