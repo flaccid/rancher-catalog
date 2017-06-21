@@ -15,7 +15,9 @@ services:
   mysql:
     image: mysql:latest
     environment:
+{{- if eq .Values.mysql_allow_empty_password "yes"}}
       MYSQL_ALLOW_EMPTY_PASSWORD: ${mysql_allow_empty_password}
+{{- end}}
 {{- if (.Values.mysql_database)}}
       MYSQL_DATABASE: ${mysql_database}
 {{- end}}
@@ -25,7 +27,9 @@ services:
 {{- if (.Values.mysql_password)}}
       MYSQL_PASSWORD: ${mysql_password}
 {{- end}}
+{{- if eq .Values.mysql_random_root_password "yes"}}
       MYSQL_RANDOM_ROOT_PASSWORD: ${mysql_random_root_password}
+{{- end}}
       MYSQL_ROOT_PASSWORD: ${mysql_root_password}
 {{- if (.Values.mysql_user)}}
       MYSQL_USER: ${mysql_user}
