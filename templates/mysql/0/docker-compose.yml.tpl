@@ -21,7 +21,7 @@ services:
 {{- if (.Values.mysql_database)}}
       MYSQL_DATABASE: ${mysql_database}
 {{- end}}
-{{- if (.Values.mysql_onetime_password)}}
+{{- if eq .Values.mysql_onetime_password "yes"}}
       MYSQL_ONETIME_PASSWORD: ${mysql_onetime_password}
 {{- end}}
 {{- if (.Values.mysql_password)}}
