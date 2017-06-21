@@ -11,15 +11,15 @@
       required: true
       default: 3306
       type: "int"
-    - variable: mysql_database
-      description: "MySQL Database"
-      label: "MySQL Database"
-      required: false
-      type: "string"
     - variable: mysql_root_password
       description: "The password that will be set for the MySQL root superuser account."
       label: "MySQL Root Password"
       required: true
+      type: "string"
+    - variable: mysql_database
+      description: "Optional, allows you to specify the name of a database to be created on image startup."
+      label: "MySQL Database"
+      required: false
       type: "string"
     - variable: mysql_user
       description: "Creates an additional MySQL (super)user. MySQL Password must also be set."
