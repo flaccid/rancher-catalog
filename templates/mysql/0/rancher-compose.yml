@@ -34,19 +34,21 @@
     - variable: mysql_allow_empty_password
       description: "Set to yes to allow the container to be started with a blank password for the root user."
       label: MySQL Allow Empty Password
-      type: enum
+      type: "enum"
       options:
-        - yes
-        - no
-      default: no
+        - "yes"
+        - "no"
+      default: "no"
+      required: false
     - variable: mysql_random_root_password
       description: "Set to yes to generate a random initial password for the root user (using pwgen)."
       label: MySQL Random Root Password
       type: "enum"
       options:
-        - yes
-        - no
-      default: no
+        - "yes"
+        - "no"
+      default: "no"
+      required: false
     - variable: mysql_onetime_password
       description: "If set to any value, the root user's password will be set as expired once init is complete."
       label: MySQL Random Root Password

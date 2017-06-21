@@ -18,7 +18,9 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: ${mysql_allow_empty_password}
       MYSQL_DATABASE: ${mysql_database}
       MYSQL_ONETIME_PASSWORD: ${mysql_onetime_password}
+{{- if (.Values.mysql_password)}}
       MYSQL_PASSWORD: ${mysql_password}
+{{- end}}
       MYSQL_RANDOM_ROOT_PASSWORD: ${mysql_random_root_password}
       MYSQL_ROOT_PASSWORD: ${mysql_root_password}
       MYSQL_USER: ${mysql_user}
