@@ -15,7 +15,7 @@
       description: "The password that will be set for the MySQL root superuser account."
       label: "MySQL Root Password"
       required: true
-      type: "string"
+      type: password
     - variable: mysql_image
       description: "The docker image to use for the MySQL server."
       label: "MySQL Docker Image"
@@ -61,7 +61,7 @@
       description: "A password for the additional MySQL (super)user. MySQL User must also be set."
       label: "MySQL Password"
       required: false
-      type: "string"
+      type: password
     - variable: mysql_allow_empty_password
       description: "Set to 'yes' to allow the container to be started with a blank password for the root user."
       label: MySQL Allow Empty Password
