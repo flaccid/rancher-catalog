@@ -45,7 +45,7 @@
         - "mariadb:5.5.56"
         - "mariadb:5.5"
         - "mariadb:5"
-      default: "latest"
+      default: "mysql:latest"
       required: true
     - variable: mysql_database
       description: "Optional, allows you to specify the name of a database to be created on image startup."
