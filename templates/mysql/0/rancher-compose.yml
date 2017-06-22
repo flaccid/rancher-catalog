@@ -5,7 +5,7 @@
   uuid: mysql-0
   minimum_rancher_version: v1.0.0
   questions:
-    - variable: lb_port
+    - variable: mysql_lb_port
       description: "Public port for access to MySQL through the load balancer"
       label: "MySQL Public LB Port"
       required: true
@@ -16,6 +16,37 @@
       label: "MySQL Root Password"
       required: true
       type: "string"
+    - variable: mysql_image
+      description: "The docker image to use for the MySQL server."
+      label: "MySQL Docker Image"
+      type: "enum"
+      options:
+        - "mysql:latest"
+        - "mysql:8.0.1"
+        - "mysql:8.0"
+        - "mysql:8"
+        - "mysql:5.7.18"
+        - "mysql:5.7"
+        - "mysql:5"
+        - "mysql:5.6.36"
+        - "mysql:5.6"
+        - "mysql:5.5.56"
+        - "mysql:5.5"
+        - "mariadb:latest"
+        - "mariadb:10.3.0"
+        - "mariadb:10.3"
+        - "mariadb:10.2.6"
+        - "mariadb:10.2"
+        - "mariadb:10.1.24"
+        - "mariadb:10.1"
+        - "mariadb:10"
+        - "mariadb:10.0.31"
+        - "mariadb:10.0"
+        - "mariadb:5.5.56"
+        - "mariadb:5.5"
+        - "mariadb:5"
+      default: "latest"
+      required: true
     - variable: mysql_database
       description: "Optional, allows you to specify the name of a database to be created on image startup."
       label: "MySQL Database"
@@ -69,7 +100,7 @@ services:
       port_rules:
       - protocol: tcp
         service: mysql
-        source_port: ${lb_port}
+        source_port: ${mysql_lb_port}
         target_port: 3306
     health_check:
       healthy_threshold: 2

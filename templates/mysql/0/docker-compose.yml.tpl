@@ -5,7 +5,7 @@ services:
     links:
       - mysql
     ports:
-      - ${lb_port}:3306
+      - ${mysql_lb_port}:3306
   mysql-data:
     image: busybox
     labels:
@@ -13,7 +13,7 @@ services:
     volumes:
       - /var/lib/mysql
   mysql:
-    image: mysql:latest
+    image: ${mysql_image}
     environment:
 {{- if eq .Values.mysql_allow_empty_password "yes"}}
       MYSQL_ALLOW_EMPTY_PASSWORD: ${mysql_allow_empty_password}
