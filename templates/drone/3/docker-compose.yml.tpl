@@ -85,3 +85,5 @@ services:
       - ${host_port}:8000/tcp
     links:
       - server:server
+    labels:
+      io.rancher.scheduler.affinity:host_label_soft: drone_lb=true
