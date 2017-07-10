@@ -45,7 +45,7 @@ catalog:
         - false
     - variable: drone_admin
       label: Drone Admin
-      description: List of admins for drone coma seperated. http://readme.drone.io/admin/user-admins/
+      description: List of admins for drone comma seperated. http://readme.drone.io/admin/user-admins/
       type: string
       required: false
     - variable: drone_orgs
@@ -68,7 +68,7 @@ catalog:
     - variable: drone_driver_client
       label: Remote Driver client
       description: "Client key from remote driver. Required for GitHub, Bitbucket Cloud, Bitbucket Server and GitLab."
-      type: multiline
+      type: string
       required: false
     - variable: drone_driver_secret
       label: Remote Driver secret
