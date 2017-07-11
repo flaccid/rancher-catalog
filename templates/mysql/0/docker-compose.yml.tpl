@@ -1,7 +1,7 @@
 version: '2'
 services:
   mysql-lb:
-    image: rancher/load-balancer-service
+    image: rancher/lb-service-haproxy
     links:
       - mysql
     ports:
