@@ -136,7 +136,7 @@ catalog:
       description: "Optional: No proxy hosts (comma-separated hostnames/IPs)."
       required: false
       default: "drone"
-    - variable: drone_debug"
+    - variable: "drone_debug"
       label: Drone Debug
       description: "Enable debug output with the Drone server."
       type: enum
