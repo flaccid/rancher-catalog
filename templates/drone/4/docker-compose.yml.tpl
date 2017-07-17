@@ -30,6 +30,9 @@ services:
     image: ${drone_server_image}
     environment:
       GIN_MODE: ${gin_mode}
+{{- if (.Values.drone_debug)}}
+      DRONE_DEBUG: ${drone_debug}
+{{- end}}
       DRONE_SECRET: ${drone_secret}
       DRONE_OPEN: ${drone_open}
 {{- if (.Values.drone_admin)}}

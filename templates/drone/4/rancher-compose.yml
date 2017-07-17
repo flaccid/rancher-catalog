@@ -136,6 +136,12 @@ catalog:
       description: "Optional: No proxy hosts (comma-separated hostnames/IPs)."
       required: false
       default: "drone"
+    - variable: drone_debug"
+      type: enum
+      options:
+        - 'true'
+        - 'false'
+      default: 'false'
 services:
   agent:
     scale: ${agent_scale}
