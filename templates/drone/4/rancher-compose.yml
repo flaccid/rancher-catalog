@@ -90,6 +90,11 @@ catalog:
       description: "Remote Driver password. Required for BitBucket Server, http://docs.drone.io/install-for-bitbucket-server/."
       type: password
       required: false
+    - variable: drone_image
+      label: Drone Docker Image
+      description: "Docker image used by the server and agent containers."
+      type: string
+      default: "drone/drone:0.7.3"
     - variable: database_driver
       label: Database Driver
       description: "Database driver. If sqlite, additional volume would be mounted at /var/lib/drone."
