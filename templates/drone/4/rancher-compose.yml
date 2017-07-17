@@ -120,6 +120,21 @@ catalog:
       label: "Database source"
       description: "Database datasource. Required if database driver is mysql or postgres, http://readme.drone.io/admin/database-engines/"
       required: false
+    - variable: "http_proxy"
+      type: string
+      label: HTTP Proxy
+      description: "Optional: HTTP forward proxy URL."
+      required: false
+    - variable: "https_proxy"
+      type: string
+      label: HTTPS Proxy
+      description: "Optional: HTTPS forward proxy URL."
+      required: false
+    - variable: "no_proxy"
+      type: string
+      label: No Proxy
+      description: "Optional: No proxy URL."
+      required: false
 services:
   agent:
     scale: ${agent_scale}

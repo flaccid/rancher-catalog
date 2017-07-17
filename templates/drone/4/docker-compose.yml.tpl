@@ -58,6 +58,18 @@ services:
       DRONE_DATABASE_DRIVER: ${database_driver}
       DRONE_DATABASE_DATASOURCE: ${database_source}
 {{- end}}
+{{- if (.Values.http_proxy)}}
+      HTTP_PROXY: ${http_proxy}
+      http_proxy: ${http_proxy}
+{{- end}}
+{{- if (.Values.https_proxy)}}
+      HTTPS_PROXY: ${https_proxy}
+      https_proxy: ${https_proxy}
+{{- end}}
+{{- if (.Values.no_proxy)}}
+      NO_PROXY: ${no_proxy},drone
+      no_proxy: ${no_proxy}.drone
+{{- end}}
     labels:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
