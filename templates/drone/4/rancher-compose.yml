@@ -135,6 +135,7 @@ catalog:
       label: No Proxy
       description: "Optional: No proxy hosts (comma-separated hostnames/IPs)."
       required: false
+      default: "drone"
 services:
   agent:
     scale: ${agent_scale}

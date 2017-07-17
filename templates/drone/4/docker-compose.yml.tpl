@@ -5,6 +5,18 @@ services:
     environment:
       DRONE_SERVER: ${drone_server}
       DRONE_SECRET: ${drone_secret}
+{{- if (.Values.http_proxy)}}
+      HTTP_PROXY: ${http_proxy}
+      http_proxy: ${http_proxy}
+{{- end}}
+{{- if (.Values.https_proxy)}}
+      HTTPS_PROXY: ${https_proxy}
+      https_proxy: ${https_proxy}
+{{- end}}
+{{- if (.Values.no_proxy)}}
+      NO_PROXY: ${no_proxy}
+      no_proxy: ${no_proxy}
+{{- end}}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     links:
@@ -67,8 +79,8 @@ services:
       https_proxy: ${https_proxy}
 {{- end}}
 {{- if (.Values.no_proxy)}}
-      NO_PROXY: ${no_proxy},drone
-      no_proxy: ${no_proxy}.drone
+      NO_PROXY: ${no_proxy}
+      no_proxy: ${no_proxy}
 {{- end}}
     labels:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
