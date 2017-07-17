@@ -137,6 +137,8 @@ catalog:
       required: false
       default: "drone"
     - variable: drone_debug"
+      label: Drone Debug
+      description: "Enable debug output with the Drone server."
       type: enum
       options:
         - 'true'
