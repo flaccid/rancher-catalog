@@ -133,7 +133,7 @@ catalog:
     - variable: "no_proxy"
       type: string
       label: No Proxy
-      description: "Optional: No proxy URL."
+      description: "Optional: No proxy hosts (comma-separated hostnames/IPs)."
       required: false
 services:
   agent:
