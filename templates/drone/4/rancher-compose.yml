@@ -90,6 +90,11 @@ catalog:
       description: "Remote Driver password. Required for BitBucket Server, http://docs.drone.io/install-for-bitbucket-server/."
       type: password
       required: false
+    - variable: drone_server
+      label: Drone Server
+      description: "Drone sever identifier. Used by the agent to connect to the server (does not require change)."
+      type: string
+      default: "ws://drone:8000/ws/broker"
     - variable: drone_server_image
       label: Drone Server Image
       description: "Docker image used for the Drone server container."

@@ -3,7 +3,7 @@ services:
   agent:
     image: ${drone_agent_image}
     environment:
-      DRONE_SERVER: ws://drone:8000/ws/broker
+      DRONE_SERVER: ${drone_server}
       DRONE_SECRET: ${drone_secret}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
