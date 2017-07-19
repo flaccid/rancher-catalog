@@ -1,0 +1,49 @@
+version: '2'
+services:
+  openvpn-ldap-data:
+    labels:
+      io.rancher.container.start_once: 'true'
+    entrypoint:
+    - /bin/true
+    image: busybox
+    volumes:
+    - /etc/openvpn/
+
+  openvpn-ldap-server:
+    ports:
+    - 1194:1194/tcp
+    environment:
+      AUTH_METHOD: ldap
+      AUTH_LDAP_URL: ${AUTH_LDAP_URL}
+      AUTH_LDAP_BASEDN: ${AUTH_LDAP_BASEDN}
+      AUTH_LDAP_SEARCH: ${AUTH_LDAP_SEARCH}
+      AUTH_LDAP_BINDDN: ${AUTH_LDAP_BINDDN}
+      AUTH_LDAP_BINDPWD: ${AUTH_LDAP_BINDPWD}
+      CERT_COUNTRY: ${CERT_COUNTRY}
+      CERT_PROVINCE: ${CERT_PROVINCE}
+      CERT_CITY: ${CERT_CITY}
+      CERT_ORG: ${CERT_ORG}
+      CERT_EMAIL: ${CERT_EMAIL}
+      CERT_OU: ${CERT_OU}
+      REMOTE_IP: ${REMOTE_IP}
+      REMOTE_PORT: ${REMOTE_PORT}
+      VPNPOOL_NETWORK: ${VPNPOOL_NETWORK}
+      VPNPOOL_CIDR: ${VPNPOOL_CIDR}
+      OPENVPN_EXTRACONF: ${OPENVPN_EXTRACONF}
+    labels:
+      io.rancher.sidekicks: openvpn-ldap-data
+      io.rancher.container.pull_image: always
+    network_mode: ${DOCKER_NETWORK}
+    volumes:
+    - /dev/net:/dev/net
+    - /proc/sys/net:/proc/sys/net
+    {{- if .Values.DOCKER_CAP_ADD }}
+    cap_add:
+    - ${DOCKER_CAP_ADD}
+    {{- end }}
+    image: mdns/rancher-openvpn:1.0
+    {{- if .Values.DOCKER_PRIVILEGED }}
+    privileged: true
+    {{- end }}
+    volumes_from:
+    - openvpn-ldap-data
