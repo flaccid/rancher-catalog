@@ -1,0 +1,74 @@
+.catalog:
+  name: "rancher-alarms"
+  version: "v0.0.0"
+  description: "Send notifications when a stack or service degrades in Rancher."
+  questions:
+    - variable: "RANCHER_ADDRESS"
+      label: "Rancher URL"
+      description: "Rancher server address"
+      type: "string"
+      required: true
+    - variable: "RANCHER_ACCESS_KEY"
+      label: "Rancher Access Key"
+      description: "Rancher Access Key for the environment to be monitored"
+      type: "string"
+      required: true
+    - variable: "RANCHER_SECRET_KEY"
+      label: "Rancher Secret Key"
+      description: "Rancher Secret Key for the environment to be monitored"
+      type: "string"
+      required: true
+    - variable: "RANCHER_ENV_ID"
+      label: "Rancher Environment ID"
+      description: "Rancher Environment ID"
+      type: "string"
+      required: true
+    - variable: "ALARM_EMAIL_USER"
+      label: "SMTP user account"
+      description: "SMTP user account "
+      type: "string"
+      required: true
+    - variable: "ALARM_EMAIL_PASS"
+      label: "SMTP password"
+      description: "SMTP password"
+      type: "string"
+      required: false
+    - variable: "ALARM_EMAIL_SMTP_HOST"
+      label: "SMTP host"
+      description: "SMTP host"
+      type: "string"
+      required: false
+    - variable: "ALARM_EMAIL_SMTP_PORT"
+      label: "SMTP server port"
+      description: ""
+      type: "string"
+      required: true
+    - variable: "ALARM_EMAIL_FROM"
+      label: "Email Sender"
+      description: "The sender of the alarm emails (From:)"
+      type: "string"
+      required: true
+    - variable: "ALARM_EMAIL_ADDRESSES"
+      label: "Email Recipients"
+      description: "Email addresses to send alarms to."
+      type: "string"
+      required: false
+      ALARM_EMAIL_SMTP_HOST: ${ALARM_EMAIL_SMTP_HOST}
+      ALARM_EMAIL_SMTP_PORT: '${ALARM_EMAIL_SMTP_PORT}'
+      ALARM_EMAIL_SSL: ${ALARM_EMAIL_SSL}
+      ALARM_EMAIL_SUBJECT: "${ALARM_EMAIL_SUBJECT}"
+      ALARM_EMAIL_USER: ${ALARM_EMAIL_USER}
+      ALARM_EMAIL_TEMPLATE: ${ALARM_EMAIL_TEMPLATE}
+      ALARM_FILTER: ${ALARM_FILTER}
+      ALARM_MONITOR_HEALTHY_THRESHOLD: '${ALARM_MONITOR_HEALTHY_THRESHOLD}'
+      ALARM_MONITOR_INTERVAL: '${ALARM_MONITOR_INTERVAL}'
+      ALARM_MONITOR_UNHEALTHY_THRESHOLD: '${ALARM_MONITOR_UNHEALTHY_THRESHOLD}'
+      ALARM_POLL_INTERVAL: '${ALARM_POLL_INTERVAL}'
+      ALARM_SLACK_BOTNAME: ${ALARM_SLACK_BOTNAME}
+      ALARM_SLACK_CHANNEL: '${ALARM_SLACK_CHANNEL}'
+      ALARM_SLACK_TEMPLATE: "${ALARM_SLACK_TEMPLATE}"
+      ALARM_SLACK_WEBHOOK_URL: ${ALARM_SLACK_WEBHOOK_URL}
+      RANCHER_ACCESS_KEY: ${RANCHER_ACCESS_KEY}
+      RANCHER_ADDRESS: ${RANCHER_ADDRESS}
+      RANCHER_PROJECT_ID: ${RANCHER_PROJECT_ID}
+      RANCHER_SECRET_KEY: ${RANCHER_SECRET_KEY}
