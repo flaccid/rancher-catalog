@@ -41,12 +41,11 @@ galera:
   stdin_open: true
   tty: true
   command: /bin/bash
-
 galera-lb:
   expose:
   - 3306:3307/tcp
   tty: true
-  image: rancher/load-balancer-service
+  image: rancher/lb-service-haproxy
   links:
   - galera:galera
   stdin_open: true
