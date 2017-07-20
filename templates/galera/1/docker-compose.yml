@@ -2,7 +2,7 @@ version: '2'
 services:
   mariadb-galera-server:
     image: mariadb:10.2
-    net: "container:galera"
+    network_mode: "container:galera"
     environment:
       TERM: "xterm"
       MYSQL_ROOT_PASSWORD: "${mysql_root_password}"
@@ -16,7 +16,7 @@ services:
     entrypoint: bash -x /opt/rancher/start_galera
   mariadb-galera-data:
     image: mariadb:10.2
-    net: none
+    network_mode: none
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
@@ -29,7 +29,7 @@ services:
       io.rancher.container.start_once: true
   galera-leader-forwarder:
     image: rancher/galera-leader-proxy:v0.1.0
-    net: "container:galera"
+    network_mode: "container:galera"
     volumes_from:
      - 'mariadb-galera-data'
   galera:
