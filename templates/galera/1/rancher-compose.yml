@@ -5,7 +5,7 @@
     Galera Cluster based on MariaDB 10.2
   questions:
     - variable: "mysql_root_password"
-      type: string
+      type: password
       required: true
       label: "MySQL Root Password"
       description: "Password given to the root mysql user"
@@ -20,7 +20,7 @@
       description: "MySQL user for the created database"
       label: "MySQL DB User"
     - variable: "mysql_password"
-      type: string
+      type: password
       required: true
       label: "MySQL DB Password"
       description: "Password for the MySQL user of the created database"
