@@ -86,7 +86,7 @@ catalog:
       type: string
       required: false
     - variable: drone_driver_password
-      label: Remove Driver Password
+      label: Remote Driver Password
       description: "Remote Driver password. Required for BitBucket Server, http://docs.drone.io/install-for-bitbucket-server/."
       type: password
       required: false
