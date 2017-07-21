@@ -66,12 +66,12 @@ catalog:
         - Bitbucket Cloud
         - Bitbucket Server
     - variable: drone_driver_client
-      label: Remote Driver client
+      label: Remote Driver Client
       description: "Client key from remote driver. Required for GitHub, Bitbucket Cloud, Bitbucket Server and GitLab."
       type: string
       required: false
     - variable: drone_driver_secret
-      label: Remote Driver secret
+      label: Remote Driver Secret
       description: "Secret key from remote driver. Required for GitHub, Bitbucket Cloud, Bitbucket Server and GitLab."
       type: multiline
       required: false
