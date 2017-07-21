@@ -34,7 +34,7 @@ services:
      - 'mariadb-galera-data'
     command: "giddyup leader forward --src-port 3307 --dst-port 3306"
   galera:
-    image: rancher/galera-conf:v0.2.0
+    image: flaccid/galera-conf:v0.2.0
     labels:
       io.rancher.sidekicks: mariadb-galera-data,mariadb-galera-server,galera-leader-forwarder
       io.rancher.container.hostname_override: container_name
