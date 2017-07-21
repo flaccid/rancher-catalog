@@ -81,7 +81,7 @@ catalog:
       type: string
       required: false
     - variable: drone_driver_user
-      label: Remove Driver Username
+      label: Remote Driver Username
       description: "Remote Driver username. Required for BitBucket Server; see http://docs.drone.io/install-for-bitbucket-server/."
       type: string
       required: false
