@@ -20,7 +20,7 @@ catalog:
       default: 1
       type: int
     - variable: drone_secret
-      label: Server and agents secret.
+      label: Server and agents sercret. 
       description: Server and agents secret to be communicate. http://readme.drone.io/admin/user-registration/
       type: password
       required: true
@@ -45,7 +45,7 @@ catalog:
         - false
     - variable: drone_admin
       label: Drone Admin
-      description: List of admins for drone comma seperated. http://readme.drone.io/admin/user-admins/
+      description: List of admins for drone coma seperated. http://readme.drone.io/admin/user-admins/
       type: string
       required: false
     - variable: drone_orgs
@@ -57,38 +57,27 @@ catalog:
       type: "enum"
       required: true
       label: "Remote Driver"
-      default: "GitHub"
+      default: "github"
       description: "Remote Git and Auth scheme. ref http://readme.drone.io/admin"
       options:
-        - GitHub
-        - GitLab
-        - Gogs
-        - Bitbucket Cloud
-        - Bitbucket Server
+        - github
+        - bitbucket
+        - gitlab
+        - gogs
     - variable: drone_driver_client
       label: Remote Driver client
-      description: "Client key from remote driver. Required for GitHub, Bitbucket Cloud, Bitbucket Server and GitLab."
+      description: "Client key from remote driver. Required for github, bitbucket and gitlab."
       type: string
       required: false
     - variable: drone_driver_secret
       label: Remote Driver secret
-      description: "Secret key from remote driver. Required for GitHub, Bitbucket Cloud, Bitbucket Server and GitLab."
-      type: multiline
+      description: "Secret key from remote driver. Required for github, bitbucket and gitlab."
+      type: string
       required: false
     - variable: drone_driver_url
-      label: Remote Driver URL
-      description: "Remote Driver server url. Required for GitLab, Gogs and Bitbucket Server; see http://readme.drone.io/admin."
+      label: Remote Driver url
+      description: "Remote Driver server url. Required for gitlab and gogs, http://readme.drone.io/admin"
       type: string
-      required: false
-    - variable: drone_driver_user
-      label: Remove Driver Username
-      description: "Remote Driver username. Required for BitBucket Server; see http://docs.drone.io/install-for-bitbucket-server/."
-      type: string
-      required: false
-    - variable: drone_driver_password
-      label: Remove Driver Password
-      description: "Remote Driver password. Required for BitBucket Server, http://docs.drone.io/install-for-bitbucket-server/."
-      type: password
       required: false
     - variable: database_driver
       label: Database Driver

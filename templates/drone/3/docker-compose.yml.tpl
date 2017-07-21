@@ -26,31 +26,23 @@ services:
 {{- if (.Values.drone_orgs)}}
       DRONE_ORGS: ${drone_orgs}
 {{- end}}
-{{- if eq .Values.drone_driver "GitHub"}}
+{{- if eq .Values.drone_driver "github"}}
       DRONE_GITHUB: true
       DRONE_GITHUB_CLIENT: ${drone_driver_client}
       DRONE_GITHUB_SECRET: ${drone_driver_secret}
 {{- end}}
-{{- if eq .Values.drone_driver "Bitbucket Cloud"}}
+{{- if eq .Values.drone_driver "bitbucket"}}
       DRONE_BITBUCKET: true
       DRONE_BITBUCKET_CLIENT: ${drone_driver_client}
       DRONE_BITBUCKET_SECRET: ${drone_driver_secret}
 {{- end}}
-{{- if eq .Values.drone_driver "Bitbucket Server"}}
-      DRONE_STASH: true
-      DRONE_STASH_GIT_USERNAME: ${drone_driver_user}
-      DRONE_STASH_GIT_PASSWORD: ${drone_driver_password}
-      DRONE_STASH_CONSUMER_KEY: ${drone_driver_client}
-      DRONE_STASH_CONSUMER_RSA_STRING: ${drone_driver_secret}
-      DRONE_STASH_URL: ${drone_driver_url}
-{{- end}}
-{{- if eq .Values.drone_driver "GitLab"}}
+{{- if eq .Values.drone_driver "gitlab"}}
       DRONE_GITLAB: true
       DRONE_GITLAB_CLIENT: ${drone_driver_secret}
       DRONE_GITLAB_SECRET: ${drone_driver_secret}
       DRONE_GITLAB_URL: ${drone_driver_url}
 {{- end}}
-{{- if eq .Values.drone_driver "Gogs"}}
+{{- if eq .Values.drone_driver "gogs"}}
       DRONE_GOGS: true
       DRONE_GOGS_URL: ${drone_driver_url}
 {{- end}}
@@ -85,5 +77,3 @@ services:
       - ${host_port}:8000/tcp
     links:
       - server:server
-    labels:
-      io.rancher.scheduler.affinity:host_label_soft: drone_lb=true

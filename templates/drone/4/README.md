@@ -2,7 +2,7 @@
 
 ### Info:
 
-This template creates an instance of Drone CI server 0.6 along with selectable number of agents to perform the builds.
+This template creates an instance of Drone CI server 0.8 along with selectable number of agents to perform the builds.
 
 ### Usage:
 

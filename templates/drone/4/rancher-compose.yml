@@ -1,7 +1,7 @@
 version: 2
 catalog:
   name: Drone
-  version: 0.7.3-rancher1
+  version: 0.8.0-rc.1-rancher1
   upgrade_from: 0.5-rancher1
   description: |
     Drone CI Server ref http://readme.drone.io/admin/installation-guide/
@@ -99,12 +99,12 @@ catalog:
       label: Drone Server Image
       description: "Docker image used for the Drone server container."
       type: string
-      default: "drone/drone:0.7.3"
+      default: "drone/drone:0.8.0-rc.1"
     - variable: drone_agent_image
       label: Drone Agent Image
       description: "Docker image used for the Drone agent container(s)."
       type: string
-      default: "drone/drone:0.7.3"
+      default: "drone/drone:0.8.0-rc.1"
     - variable: database_driver
       label: Database Driver
       description: "Database driver. If sqlite, additional volume would be mounted at /var/lib/drone."
