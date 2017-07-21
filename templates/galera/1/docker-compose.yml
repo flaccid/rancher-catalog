@@ -32,7 +32,7 @@ services:
     network_mode: "container:galera"
     volumes_from:
      - 'mariadb-galera-data'
-    command: "/usr/local/bin/giddyup leader forward --src-port 3307 --dst-port 3306"
+    command: "giddyup leader forward --src-port 3307 --dst-port 3306"
   galera:
     image: rancher/galera-conf:v0.2.0
     labels:
