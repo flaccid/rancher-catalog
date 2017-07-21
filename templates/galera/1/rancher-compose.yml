@@ -1,6 +1,6 @@
 version: '2'
 .catalog:
-  name: "Galera DB"
+  name: Galera Cluster"
   version: 10.2
   description: |
     Galera Cluster based on MariaDB 10.2
@@ -26,7 +26,7 @@ version: '2'
       label: "MySQL DB Password"
       description: "Password for the MySQL user of the created database"
 services:
-  galera:
+  galera-conf:
     scale: 3
     metadata:
       mysqld: |
