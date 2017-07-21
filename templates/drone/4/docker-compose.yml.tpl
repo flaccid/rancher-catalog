@@ -106,6 +106,9 @@ services:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
 {{- end}}
+    ports:
+     - 9000/tcp
+     - 8000/tcp
   lb:
     image: rancher/load-balancer-service
     ports:
