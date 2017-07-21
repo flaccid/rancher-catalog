@@ -1,6 +1,6 @@
 version: '2'
 .catalog:
-  name: Galera Cluster"
+  name: "Galera Cluster"
   version: 10.2
   description: |
     Galera Cluster based on MariaDB 10.2
