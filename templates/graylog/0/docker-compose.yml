@@ -38,8 +38,8 @@ services:
       - mongodb:mongo
       - graylog-elasticsearch:elasticsearch
     ports:
-      - 12201:12201/udp"
-      - 1514:1514/udp"
+      - 12201:12201/udp
+      - 1514:1514/udp
   graylog-lb:
     image: rancher/lb-service-haproxy:v0.6.4
     ports:
