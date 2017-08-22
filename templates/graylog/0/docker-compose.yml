@@ -40,7 +40,7 @@ services:
     ports:
       - 12201:12201/udp
       - 1514:1514/udp
-  gl-lb:
+  graylog-lb:
     image: rancher/lb-service-haproxy:v0.7.5
     ports:
      - ${graylog_lb_port}:${graylog_lb_port}
