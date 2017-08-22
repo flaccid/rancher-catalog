@@ -40,7 +40,10 @@ services:
     ports:
       - 12201:12201/udp
       - 1514:1514/udp
-  graylog-lb:
-    image: rancher/lb-service-haproxy:v0.6.4
+  gl-lb:
+    image: rancher/lb-service-haproxy:v0.7.5
     ports:
-      - ${graylog_lb_port}:${graylog_lb_port}
+     - ${graylog_lb_port}:${graylog_lb_port}
+    labels:
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.container.create_agent: 'true'

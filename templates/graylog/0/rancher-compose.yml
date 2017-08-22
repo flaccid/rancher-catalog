@@ -25,3 +25,41 @@
       type: "string"
       default: "localhost"
       required: true
+version: '2'
+services:
+  graylog-lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - hostname: ''
+        path: ''
+        priority: 1
+        protocol: http
+        service: graylog
+        source_port: 9000
+        target_port: 9000
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  graylog-elasticsearch:
+    scale: 1
+    start_on_create: true
+  graylog:
+    scale: 1
+    start_on_create: true
+  graylog-data:
+    scale: 1
+    start_on_create: true
+  mongodb-data:
+    scale: 1
+    start_on_create: true
+  mongodb:
+    scale: 1
+    start_on_create: true
