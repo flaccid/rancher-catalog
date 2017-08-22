@@ -19,8 +19,3 @@
       type: "string"
       default: "localhost"
       required: true
-    - variable: es_service
-      description: "Service ElasticSearch"
-      label: "Service ElasticSearch"
-      type: "service"
-      required: true
