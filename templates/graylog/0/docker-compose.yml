@@ -26,8 +26,8 @@ services:
   graylog:
     environment:
       GRAYLOG_ELASTICSEARCH_HOSTS: http://elasticsearch:9200
-      GRAYLOG_PASSWORD_SECRET: ${graylog_secret}
-      GRAYLOG_ROOT_PASSWORD_SHA2: ${graylog_password}
+      GRAYLOG_PASSWORD_SECRET: some_salt_thing_with_more_characters
+      GRAYLOG_ROOT_PASSWORD_SHA2: 4bbdd5a829dba09d7a7ff4c1367be7d36a017b4267d728d31bd264f63debeaa6  # ‘graylog’
       GRAYLOG_WEB_ENDPOINT_URI: "http://${graylog_fqdn}:9000/api"
     image: "graylog2/server:2.3.0-1"
     labels:
