@@ -37,14 +37,10 @@ services:
     links:
       - mongodb:mongo
       - graylog-elasticsearch:elasticsearch
-    external_links:
-      - ${es_service}:elasticsearch
+    ports:
+      - "12201/udp:12201/udp"
+      - "1514/udp:1514/udp"
   graylog-lb:
     image: rancher/lb-service-haproxy:v0.6.4
     ports:
-      - 9000:9000
-      - 12900:12900
-    links:
-      - graylog:graylog
-    labels:
-      io.rancher.scheduler.global: 'true'
+      - ${graylog_lb_port}:${graylog_lb_port}

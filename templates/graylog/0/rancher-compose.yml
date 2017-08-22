@@ -3,6 +3,12 @@
   version: "v2.3.0-1"
   description: "Open source log management that actually works."
   questions:
+    - variable: graylog_lb_port
+      description: "Public port for access to Graylog through the load balancer"
+      label: "Graylog Public LB Port"
+      required: true
+      default: 9000
+      type: "int"
     - variable: graylog_password
       description: "Password in sha2"
       label: "SHA2 Password"
