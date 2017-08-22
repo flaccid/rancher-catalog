@@ -6,17 +6,18 @@
     - variable: graylog_password
       description: "Password in sha2"
       label: "SHA2 Password"
-      type: "string"
+      type: password
       required: true
     - variable: graylog_secret
       description: "Password secret"
       label: "Password secret"
-      type: "string"
+      type: password
       required: true
     - variable: graylog_fqdn
       description: "FQDN of Graylog"
       label: "FQDN"
       type: "string"
+      default: "localhost"
       required: true
     - variable: es_service
       description: "Service ElasticSearch"
