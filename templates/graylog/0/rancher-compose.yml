@@ -14,12 +14,12 @@
       label: "SHA2 Password"
       type: password
       required: true
-      default: 4bbdd5a829dba09d7a7ff4c1367be7d36a017b4267d728d31bd264f63debeaa6
+      default: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
     - variable: graylog_secret
       description: "Password secret"
       label: "Password secret"
       type: password
-      default: some_salt_thing_with_more_characters
+      default: "replacethiswithyourownsecret!"
       required: true
     - variable: graylog_fqdn
       description: "FQDN of Graylog"
