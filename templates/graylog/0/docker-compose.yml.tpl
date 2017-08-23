@@ -47,3 +47,4 @@ services:
     labels:
       io.rancher.container.agent.role: environmentAdmin
       io.rancher.container.create_agent: 'true'
+      io.rancher.scheduler.affinity:host_label_soft: ${graylog_lb_host_label}

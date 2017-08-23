@@ -25,6 +25,12 @@
       type: "string"
       default: "localhost"
       required: true
+    - variable: graylog_lb_host_label
+      label: Graylog LB Host Label
+      description: Host label (soft affinity) for scheduling of the load balancer service.
+      required: true
+      default: "graylog_lb=true"
+      type: string
 version: '2'
 services:
   graylog-lb:
