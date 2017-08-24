@@ -69,7 +69,7 @@ services:
     labels:
       io.rancher.container.pull_image: always
   lb:
-    image: rancher/lb-service-haproxy:v0.7.5
+    image: rancher/lb-service-haproxy:v0.7.6
     ports:
      - ${graylog_lb_port}:${graylog_lb_port}
     labels:
