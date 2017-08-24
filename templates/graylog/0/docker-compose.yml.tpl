@@ -90,7 +90,7 @@ services:
       io.rancher.scheduler.global: 'true'
 {{- end}}
   graylog-postconf:
-    image: appropriate/curl
+    image: alpine
     stdin_open: true
     labels:
       io.rancher.container.start_once: true
@@ -100,6 +100,7 @@ services:
       - bash
       - -c
       - >
+          apk add --update curl
           sleep 60
           GRAYLOG2_INPUT_GELF_TCP='
           {
