@@ -10,7 +10,7 @@
       default: 9000
       type: "int"
     - variable: graylog_password
-      description: "Password in SHA2 (default is 'graylog')."
+      description: "Password in SHA2 (default hash is of 'admin')."
       label: "SHA2 Password"
       type: password
       required: true
@@ -33,6 +33,12 @@
       required: true
       default: "graylog_lb=true"
       type: string
+    - variable: enable_logspout
+      label: Logspout Setup
+      description: Run a service for logspout to send container logs.
+      default: true
+      required: false
+      type: boolean
 version: '2'
 services:
   graylog-lb:

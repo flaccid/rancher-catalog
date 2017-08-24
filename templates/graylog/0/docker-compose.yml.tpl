@@ -48,3 +48,16 @@ services:
       io.rancher.container.agent.role: environmentAdmin
       io.rancher.container.create_agent: 'true'
       io.rancher.scheduler.affinity:host_label_soft: ${graylog_lb_host_label}
+{{- if eq .Values.enable_logspout "true"}}
+  logspout:
+    image: micahhausler/logspout:gelf
+    stdin_open: true
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+    tty: true
+    command:
+     - "gelf://${graylog_fqdn}:12201"
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
+{{- end}}
