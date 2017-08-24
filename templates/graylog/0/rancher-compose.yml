@@ -47,7 +47,7 @@
       type: boolean
 version: '2'
 services:
-  graylog-lb:
+  lb:
     scale: 1
     start_on_create: true
     lb_config:
@@ -71,15 +71,18 @@ services:
   elasticsearch:
     scale: 1
     start_on_create: true
+  kopf:
+    scale: 1
+    start_on_create: true
   graylog:
     scale: 1
     start_on_create: true
   graylog-data:
     scale: 1
     start_on_create: true
-  mongodb-data:
+  mongo-data:
     scale: 1
     start_on_create: true
-  mongodb:
+  mongo:
     scale: 1
     start_on_create: true
