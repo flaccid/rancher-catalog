@@ -68,7 +68,7 @@ services:
       initializing_timeout: 60000
       interval: 2000
       reinitializing_timeout: 60000
-  graylog-elasticsearch:
+  elasticsearch:
     scale: 1
     start_on_create: true
   graylog:
