@@ -103,6 +103,21 @@ services:
           echo 'installing curl';
           apk add --update curl;
           sleep 60;
+
+          counter=0
+          printf 'Waiting for Graylog to start'
+          until curl -o /dev/null -s -I -f http://${graylog_fqdn}:9000/api; do
+              printf '.'
+              sleep 5
+              counter=$((counter + 1))
+              if [ "$counter" -gt 180 ]; then
+                  echo
+                  echo "Graylog did not start in time" >&2
+                  exit 1
+              fi
+          done
+          echo
+
           echo 'adding graylog inputs';
           GRAYLOG2_INPUT_GELF_TCP='
           {
