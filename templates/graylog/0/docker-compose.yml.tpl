@@ -100,8 +100,10 @@ services:
       - /bin/sh
       - -c
       - >
+          echo 'installing curl';
           apk add --update curl;
           sleep 60;
+          echo 'adding graylog inputs';
           GRAYLOG2_INPUT_GELF_TCP='
           {
                 "global": "false",
@@ -112,7 +114,7 @@ services:
                 },
                 "creator_user_id": "admin",
                 "type": "org.graylog2.inputs.gelf.tcp.GELFTCPInput"
-          }'
+          }';
           GRAYLOG2_INPUT_GELF_UDP='
           {
                 "global": "false",
@@ -123,6 +125,6 @@ services:
                 },
                 "creator_user_id": "admin",
                 "type": "org.graylog2.inputs.gelf.udp.GELFUDPInput"
-          }'
-          curl -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_TCP}" http://${graylog_fqdn}:9000/api/system/inputs;
-          curl -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_UDP}" http://${graylog_fqdn}:9000/api/system/inputs;
+          }';
+          curl -vvv -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_TCP}" http://${graylog_fqdn}:9000/api/system/inputs;
+          curl -vvv -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_UDP}" http://${graylog_fqdn}:9000/api/system/inputs;
