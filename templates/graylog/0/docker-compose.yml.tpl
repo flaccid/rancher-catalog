@@ -126,5 +126,5 @@ services:
                 "creator_user_id": "admin",
                 "type": "org.graylog2.inputs.gelf.udp.GELFUDPInput"
           }';
-          curl -vvv -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_TCP}" http://${graylog_fqdn}:9000/api/system/inputs;
-          curl -vvv -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_UDP}" http://${graylog_fqdn}:9000/api/system/inputs;
+          curl -vvv -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_TCP}" http://${graylog_fqdn}:9000/api/system/inputs;
+          curl -vvv -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_UDP}" http://${graylog_fqdn}:9000/api/system/inputs;
