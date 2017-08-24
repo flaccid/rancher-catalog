@@ -33,6 +33,12 @@
       required: true
       default: "graylog_lb=true"
       type: string
+    - variable: graylog_server_host_label
+      label: Graylog Server Host Label
+      description: Host label (soft affinity) for scheduling of the Graylog service.
+      required: true
+      default: "graylog_server=true"
+      type: string
     - variable: enable_logspout
       label: Logspout Setup
       description: Run a service for logspout to send container logs.

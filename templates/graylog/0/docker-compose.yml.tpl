@@ -32,6 +32,7 @@ services:
     image: "graylog2/server:2.3.0-1"
     labels:
       io.rancher.sidekicks: graylog-data
+      io.rancher.scheduler.affinity:host_label_soft: ${graylog_server_host_label}
     volumes_from:
       - graylog-data
     links:
