@@ -85,8 +85,8 @@ services:
                 "creator_user_id": "admin",
                 "type": "org.graylog2.inputs.gelf.udp.GELFUDPInput"
           }'
-          curl -s -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_TCP}" ${GRAYLOG2_URL}/system/inputs > /dev/null
-          curl -s -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_UDP}" ${GRAYLOG2_URL}/system/inputs > /dev/null
+          curl -s -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_TCP}" http://${graylog_fqdn}:9000/api/system/inputs
+          curl -s -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_UDP}" http://${graylog_fqdn}:9000/api/system/inputs
           /docker-entrypoint.sh graylog ;
   geoip-data:
     image: tkrs/maxmind-geoipupdate
