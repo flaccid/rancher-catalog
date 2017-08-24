@@ -97,7 +97,7 @@ services:
     depends_on:
      - graylog
     command:
-      - bash
+      - sh
       - -c
       - >
           apk add --update curl
