@@ -58,36 +58,6 @@ services:
       - 12201:12201/udp
       - 12201:12201/tcp
       - 1514:1514/udp
-    command:
-      - bash
-      - -c
-      - >
-          GRAYLOG2_INPUT_GELF_TCP='
-          {
-                "global": "false",
-                "title": "Gelf TCP",
-                "configuration": {
-                  "port": 12201,
-                  "bind_address": "0.0.0.0"
-                },
-                "creator_user_id": "admin",
-                "type": "org.graylog2.inputs.gelf.tcp.GELFTCPInput"
-          }'
-
-          GRAYLOG2_INPUT_GELF_UDP='
-          {
-                "global": "false",
-                "title": "Gelf UDP",
-                "configuration": {
-                  "port": 12201,
-                  "bind_address": "0.0.0.0"
-                },
-                "creator_user_id": "admin",
-                "type": "org.graylog2.inputs.gelf.udp.GELFUDPInput"
-          }'
-          curl -s -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_TCP}" http://${graylog_fqdn}:9000/api/system/inputs
-          curl -s -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_UDP}" http://${graylog_fqdn}:9000/api/system/inputs
-          /docker-entrypoint.sh graylog ;
   geoip-data:
     image: tkrs/maxmind-geoipupdate
     stdin_open: true
@@ -119,3 +89,40 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
 {{- end}}
+  graylog-postconf:
+    image: appropriate/curl
+    stdin_open: true
+    labels:
+      io.rancher.container.start_once: true
+    depends_on:
+     - graylog
+    command:
+      - bash
+      - -c
+      - >
+          sleep 60
+          GRAYLOG2_INPUT_GELF_TCP='
+          {
+                "global": "false",
+                "title": "Gelf TCP",
+                "configuration": {
+                  "port": 12201,
+                  "bind_address": "0.0.0.0"
+                },
+                "creator_user_id": "admin",
+                "type": "org.graylog2.inputs.gelf.tcp.GELFTCPInput"
+          }'
+
+          GRAYLOG2_INPUT_GELF_UDP='
+          {
+                "global": "false",
+                "title": "Gelf UDP",
+                "configuration": {
+                  "port": 12201,
+                  "bind_address": "0.0.0.0"
+                },
+                "creator_user_id": "admin",
+                "type": "org.graylog2.inputs.gelf.udp.GELFUDPInput"
+          }'
+          curl -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_TCP}" http://${graylog_fqdn}:9000/api/system/inputs
+          curl -X POST -H "Content-Type: application/json" -d "${GRAYLOG2_INPUT_GELF_UDP}" http://${graylog_fqdn}:9000/api/system/inputs
