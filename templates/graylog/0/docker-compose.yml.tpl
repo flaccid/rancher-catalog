@@ -78,7 +78,7 @@ services:
       io.rancher.scheduler.affinity:host_label_soft: ${graylog_lb_host_label}
 {{- if eq .Values.enable_logspout "true"}}
   logspout:
-    image: micahhausler/logspout:gelf
+    image: flaccid/logspout:gelf
     stdin_open: true
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
