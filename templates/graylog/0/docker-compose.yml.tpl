@@ -89,7 +89,3 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
 {{- end}}
-  graylog-postconf:
-    image: alpine
-    stdin_open: true
-    tty: true
