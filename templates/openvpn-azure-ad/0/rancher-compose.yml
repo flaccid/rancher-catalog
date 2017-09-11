@@ -16,3 +16,8 @@
       label: "Tenant ID"
       required: true
       type: "string"
+version: '2'
+services:
+  openvpn-server:
+    scale: 1
+    start_on_create: true
