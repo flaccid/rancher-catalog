@@ -3,7 +3,6 @@
   version: 0.1.0
   description: |
     OpenVPN for Rancher with Azure AD authentication
-  minimum_rancher_version: v0.56.0
   maintainer: "Chris Fordham <chris@fordham-nagy.id.au>"
   questions:
     - variable: "CLIENT_ID"
@@ -16,6 +15,12 @@
       label: "Tenant ID"
       required: true
       type: "string"
+    - variable: "Privileged"
+      description: "Run as a privileged container service."
+      label: "Privileged"
+      required: true
+      type: boolean
+      default: true
 version: '2'
 services:
   openvpn-server:
