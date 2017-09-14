@@ -15,12 +15,34 @@
       label: "Tenant ID"
       required: true
       type: "string"
+    - variable: "CA_CERTIFICATE"
+      description: "Optional - provide your own CA certificate."
+      label: "CA Certificate"
+      required: false
+      type: "string"
+    - variable: "PUSH_ROUTES"
+      description: "Optional - additional push routes to provide to clients."
+      label: "Client Push Routes"
+      required: false
+      type: "string"
+    - variable: "PRINT_CLIENT_PROFILE"
+      description: "Print out the OVPN client profile in the stdout of the server container."
+      label: "Print Client Profile"
+      required: false
+      type: boolean
+      default: false
     - variable: "Privileged"
       description: "Run as a privileged container service."
       label: "Privileged"
       required: true
       type: boolean
       default: true
+    - variable: "DEBUG"
+      description: "Print a lot of stuff to help work out what is going on."
+      label: "Debug"
+      required: false
+      type: boolean
+      default: false
 version: '2'
 services:
   openvpn-server:
