@@ -6,8 +6,10 @@ services:
     environment:
       CLIENT_ID: ${CLIENT_ID}
       TENANT_ID: ${TENANT_ID}
-      PRINT_CA_CERT: 'true'
-      PRINT_OPENVPN_CONFIG: 'true'
+      CA_CERTIFICATE: ${CA_CERTIFICATE}
+      PUSH_ROUTES: ${PUSH_ROUTES}
+      PRINT_CLIENT_PROFILE: ${PRINT_CLIENT_PROFILE}
+      DEBUG: ${DEBUG}
     stdin_open: true
     tty: true
     ports:
