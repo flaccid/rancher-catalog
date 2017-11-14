@@ -1,0 +1,5 @@
+name: Kong Community Edition
+description: |
+    The World’s Most Popular Open Source Microservice API Gateway.
+version: 0.11.1
+category: API Gateways
