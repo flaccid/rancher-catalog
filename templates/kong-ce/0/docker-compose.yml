@@ -1,0 +1,53 @@
+version: '2'
+services:
+  kong:
+    image: kong:0.11.1-alpine
+    depends_on:
+      - migrations
+    environment:
+      KONG_PG_HOST: db
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_VITALS: 'on'
+    stdin_open: true
+    tty: true
+    links:
+    - db:db
+    labels:
+      io.rancher.container.pull_image: always
+  migrations:
+    image: kong:0.11.1-alpine
+    depends_on:
+      - db
+    environment:
+      KONG_PG_HOST: db
+    stdin_open: true
+    tty: true
+    command:
+    - kong
+    - migrations
+    - up
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
+  lb:
+    image: rancher/lb-service-haproxy:v0.7.9
+    ports:
+    - 8000:8000/tcp
+    - 8443:8443/tcp
+    - 8001:8001/tcp
+    - 8444:8444/tcp
+    labels:
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.container.create_agent: 'true'
+  db:
+    image: postgres:9.5
+    environment:
+      POSTGRES_USER: kong
+      POSTGRES_DB: kong
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
