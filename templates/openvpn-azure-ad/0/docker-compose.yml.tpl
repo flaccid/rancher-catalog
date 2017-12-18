@@ -5,8 +5,8 @@ services:
     image: flaccid/openvpn:azure-ad
     environment:
       AUTH_TYPE: azuread
-      AZURE_CLIENT_ID: ${CLIENT_ID}
-      AZURE_TENANT_ID: ${TENANT_ID}
+      AZUREAD_CLIENT_ID: ${CLIENT_ID}
+      AZUREAD_TENANT_ID: ${TENANT_ID}
       CA_CERTIFICATE: ${CA_CERTIFICATE}
       DEBUG: ${DEBUG}
       PUSH_ROUTES: ${PUSH_ROUTES}
