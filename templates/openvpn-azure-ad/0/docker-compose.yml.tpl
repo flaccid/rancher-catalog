@@ -11,6 +11,7 @@ services:
       DEBUG: ${DEBUG}
       PUSH_ROUTES: ${PUSH_ROUTES}
       PRINT_CLIENT_PROFILE: ${PRINT_CLIENT_PROFILE}
+      REMOTE_HOST: ${REMOTE_HOST}
     stdin_open: true
     tty: true
     ports:
