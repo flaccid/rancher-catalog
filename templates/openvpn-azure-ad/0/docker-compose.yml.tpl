@@ -4,6 +4,7 @@ services:
     privileged: true
     image: flaccid/openvpn:azure-ad
     environment:
+      AUTH_TYPE: azuread
       CLIENT_ID: ${CLIENT_ID}
       TENANT_ID: ${TENANT_ID}
       CA_CERTIFICATE: ${CA_CERTIFICATE}
