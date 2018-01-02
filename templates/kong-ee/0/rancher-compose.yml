@@ -21,32 +21,32 @@ services:
       port_rules:
       - priority: 1
         protocol: tcp
-        service: kong
+        service: kong-ee
         source_port: 8000
         target_port: 8000
       - priority: 2
         protocol: tcp
-        service: kong
+        service: kong-ee
         source_port: 8001
         target_port: 8001
       - priority: 3
         protocol: tcp
-        service: kong
+        service: kong-ee
         source_port: 8002
         target_port: 8002
       - priority: 4
         protocol: tcp
-        service: kong
+        service: kong-ee
         source_port: 8443
         target_port: 8443
       - priority: 5
         protocol: tcp
-        service: kong
+        service: kong-ee
         source_port: 8444
         target_port: 8444
       - priority: 6
         protocol: tcp
-        service: kong
+        service: kong-ee
         source_port: 8445
         target_port: 8445
     health_check:
