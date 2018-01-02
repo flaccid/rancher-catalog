@@ -4,6 +4,7 @@ services:
     image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:0.11.0.3-alpine
     environment:
       KONG_PG_HOST: db
+      KONG_LICENSE_DATA: '${KONG_LICENSE_DATA}'
     stdin_open: true
     tty: true
     command:
@@ -17,10 +18,11 @@ services:
     image: rancher/lb-service-haproxy:v0.7.9
     ports:
     - 8000:8000/tcp
-    - 8443:8443/tcp
     - 8001:8001/tcp
     - 8002:8002/tcp
+    - 8443:8443/tcp
     - 8444:8444/tcp
+    - 8445:8445/tcp
     labels:
       io.rancher.container.agent.role: environmentAdmin
       io.rancher.container.create_agent: 'true'
@@ -33,7 +35,7 @@ services:
     tty: true
     labels:
       io.rancher.container.pull_image: always
-  kong:
+  kong-ee:
     image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:0.11.0.3-alpine
     environment:
       KONG_ADMIN_ACCESS_LOG: /dev/stdout
@@ -42,6 +44,7 @@ services:
       KONG_PROXY_ACCESS_LOG: /dev/stdout
       KONG_PROXY_ERROR_LOG: /dev/stderr
       KONG_VITALS: 'on'
+      KONG_LICENSE_DATA: '${KONG_LICENSE_DATA}'
     stdin_open: true
     tty: true
     links:

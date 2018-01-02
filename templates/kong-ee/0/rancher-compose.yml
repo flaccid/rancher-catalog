@@ -1,4 +1,14 @@
 version: '2'
+catalog:
+  name: "Kong Enterprise Edition"
+  version: "0.11.0.3"
+  description: 'The World’s Most Popular Open Source Microservice API Gateway.'
+  questions:
+    - variable: LICENSE_DATA
+      label: 'License Data'
+      description: 'The license data provided by Mashape (JSON format).'
+      type: string
+      required: true
 services:
   migrations:
     scale: 1
@@ -17,23 +27,28 @@ services:
       - priority: 2
         protocol: tcp
         service: kong
-        source_port: 8443
-        target_port: 8443
-      - priority: 3
-        protocol: tcp
-        service: kong
         source_port: 8001
         target_port: 8001
-      - priority: 4
+      - priority: 3
         protocol: tcp
         service: kong
         source_port: 8002
         target_port: 8002
+      - priority: 4
+        protocol: tcp
+        service: kong
+        source_port: 8443
+        target_port: 8443
       - priority: 5
         protocol: tcp
         service: kong
         source_port: 8444
         target_port: 8444
+      - priority: 6
+        protocol: tcp
+        service: kong
+        source_port: 8445
+        target_port: 8445
     health_check:
       healthy_threshold: 2
       response_timeout: 2000
@@ -46,6 +61,6 @@ services:
   db:
     scale: 1
     start_on_create: true
-  kong:
+  kong-ee:
     scale: 1
     start_on_create: true
