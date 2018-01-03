@@ -16,7 +16,12 @@ services:
       io.rancher.container.start_once: 'true'
   lb:
     image: rancher/lb-service-haproxy:v0.7.9
+{{- if eq .Values.LB_ACCESS "Public"}}
     ports:
+{{- end}}
+{{- if eq .Values.LB_ACCESS "Internal"}}
+    expose:
+{{- end}}
     - 8000:8000/tcp
     - 8001:8001/tcp
     - 8002:8002/tcp

@@ -9,6 +9,15 @@ catalog:
       description: 'The license data provided by Mashape (JSON format).'
       type: string
       required: true
+    - variable: LB_ACCESS
+      label: 'Load Balancer Access'
+      description: 'Expose the load balancer publicly or keep internal (use your own reversy proxy or edit after).'
+      type: enum
+      options:
+        - Internal
+        - Public
+      required: true
+      default: Internal
 services:
   migrations:
     scale: 1
