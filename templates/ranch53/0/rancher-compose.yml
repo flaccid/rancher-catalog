@@ -11,12 +11,12 @@ catalog:
   - variable: "AWS_ACCESS_KEY_ID"
     label: "AWS Access Key ID"
     description: "AWS Access Key ID to update Route 53."
-    type "string"
+    type: "string"
     required: true
   - variable: "AWS_SECRET_ACCESS_KEY"
     label: "AWS Secret Access Key"
     description: "AWS Secret Access Key to update Route 53."
-    type "string"
+    type: "string"
     required: true
   - variable: "FORWARD_PROXY"
     label: "Forward Proxy"
