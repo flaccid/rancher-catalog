@@ -1,0 +1,5 @@
+name: ranch53
+description: |
+  Simple service that updates Route 53 based on labels on Rancher services.
+version: 0.0.1
+category: DNS
