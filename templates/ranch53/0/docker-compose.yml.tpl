@@ -24,4 +24,3 @@ services:
       io.rancher.container.agent.role: environment
       io.rancher.container.create_agent: 'true'
       io.rancher.container.pull_image: always
-      io.rancher.container.start_once: 'true'
