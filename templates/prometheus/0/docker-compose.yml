@@ -7,7 +7,7 @@ services:
     labels:
       io.rancher.container.pull_image: always
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:4.6.3
     stdin_open: true
     tty: true
     labels:
