@@ -6,3 +6,9 @@ services:
     tty: true
     labels:
       io.rancher.container.pull_image: always
+  grafana:
+    image: grafana/grafana
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
