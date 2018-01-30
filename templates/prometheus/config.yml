@@ -1,0 +1,5 @@
+name: Prometheus
+description: |
+  The Prometheus monitoring system and time series database.
+version: 2.1.0-1
+category: Monitoring

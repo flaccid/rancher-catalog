@@ -1,0 +1,8 @@
+version: '2'
+services:
+  prometheus:
+    image: prom/prometheus:v2.1.0
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
