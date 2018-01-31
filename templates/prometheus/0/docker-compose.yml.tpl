@@ -18,7 +18,7 @@ services:
 
 {{- if eq .Values.SETUP_NODE_EXPORTER "true"}}
   node-exporter:
-    image: prom/node-exporter:latest
+    image: prom/node-exporter:v0.15.2
     stdin_open: true
     tty: true
     labels:
