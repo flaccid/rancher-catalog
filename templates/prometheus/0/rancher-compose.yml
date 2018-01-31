@@ -15,6 +15,3 @@ services:
   prometheus:
     scale: 1
     start_on_create: true
-  grafana:
-    scale: 1
-    start_on_create: true
