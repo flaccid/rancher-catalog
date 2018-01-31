@@ -35,3 +35,17 @@ services:
       io.rancher.container.create_agent: true
       io.rancher.container.pull_image: always
 {{- end}}
+
+{{- if eq .Values.SETUP_CADVISOR "true"}}
+  cadvisor:
+    image: google/cadvisor:latest
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.scheduler.global: 'true'
+    volumes:
+      - "/:/rootfs:ro"
+      - "/var/run:/var/run:rw"
+      - "/sys:/sys:ro"
+      - "/var/lib/docker/:/var/lib/docker:ro"
+{{- end}}

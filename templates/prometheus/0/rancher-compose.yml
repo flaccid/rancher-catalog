@@ -23,6 +23,12 @@ catalog:
       required: false
       type: boolean
       default: true
+    - variable: "SETUP_CADVISOR"
+      description: "Analyzes resource usage and performance characteristics of running containers."
+      label: "Setup cAdvisor"
+      required: false
+      type: boolean
+      default: true
 services:
   prometheus:
     scale: 1
