@@ -6,8 +6,8 @@ catalog:
   maintainer: "Chris Fordham <chris@fordham-nagy.id.au>"
   questions:
     - variable: "SETUP_GRAFANA"
-      description: "Setup Grafana, the open platform for analytics and monitoring."
-      label: "Grafana"
+      description: "Grafana, the open platform for analytics and monitoring."
+      label: "Setup Grafana"
       required: false
       type: boolean
       default: true
