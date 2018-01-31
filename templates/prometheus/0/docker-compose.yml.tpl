@@ -38,7 +38,7 @@ services:
 
 {{- if eq .Values.SETUP_CADVISOR "true"}}
   cadvisor:
-    image: google/cadvisor:latest
+    image: google/cadvisor:v0.28.3
     stdin_open: true
     tty: true
     labels:
