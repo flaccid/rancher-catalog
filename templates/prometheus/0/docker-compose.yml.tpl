@@ -4,6 +4,15 @@ services:
     image: prom/prometheus:v2.1.0
     stdin_open: true
     tty: true
+    volumes_from:
+      - prometheus-conf
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.sidekicks: prometheus-conf
+  prometheus-conf:
+    image: flaccid/prometheus-conf:latest
+    stdin_open: true
+    tty: true
     labels:
       io.rancher.container.pull_image: always
 
@@ -33,15 +42,6 @@ services:
     labels:
       io.rancher.container.agent.role: environment
       io.rancher.container.create_agent: true
-      io.rancher.container.pull_image: always
-  confd-rancher:
-    image: flaccid/confd:latest
-    stdin_open: true
-    tty: true
-    command:
-    - -backend
-    - rancher
-    labels:
       io.rancher.container.pull_image: always
 {{- end}}
 
