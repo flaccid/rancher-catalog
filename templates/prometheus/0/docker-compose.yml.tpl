@@ -34,6 +34,15 @@ services:
       io.rancher.container.agent.role: environment
       io.rancher.container.create_agent: true
       io.rancher.container.pull_image: always
+  confd-rancher:
+    image: flaccid/confd:latest
+    stdin_open: true
+    tty: true
+    command:
+    - -backend
+    - rancher
+    labels:
+      io.rancher.container.pull_image: always
 {{- end}}
 
 {{- if eq .Values.SETUP_CADVISOR "true"}}
