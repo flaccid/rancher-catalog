@@ -13,6 +13,10 @@ services:
     image: flaccid/prometheus-conf:latest
     stdin_open: true
     tty: true
+    # TODO: user can choose backend
+    command:
+    - -backend
+    - rancher
     labels:
       io.rancher.container.pull_image: always
 
