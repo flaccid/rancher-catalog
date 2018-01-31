@@ -15,3 +15,12 @@ services:
     labels:
       io.rancher.container.pull_image: always
 {{- end}}
+
+{{- if eq .Values.SETUP_NODE_EXPORTER "true"}}
+  node-exporter:
+    image: prom/node-exporter:latest
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+{{- end}}

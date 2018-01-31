@@ -11,6 +11,12 @@ catalog:
       required: false
       type: boolean
       default: true
+    - variable: "SETUP_NODE_EXPORTER"
+      description: "Prometheus exporter for machine metrics, written in Go with pluggable metric collectors."
+      label: "Setup Node Exporter"
+      required: false
+      type: boolean
+      default: true
 services:
   prometheus:
     scale: 1
