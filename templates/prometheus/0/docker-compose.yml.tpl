@@ -24,3 +24,13 @@ services:
     labels:
       io.rancher.container.pull_image: always
 {{- end}}
+
+{{- if eq .Values.SETUP_RANCHER_EXPORTER "true"}}
+rancher-exporter:
+  image: infinityworks/prometheus-rancher-exporter:v0.22.93
+  stdin_open: true
+  tty: true
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.agent.role: environment
+{{- end}}
