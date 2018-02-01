@@ -23,6 +23,12 @@ catalog:
       required: false
       type: boolean
       default: true
+    - variable: "SETUP_RANCHER_CRONTAB_EXPORTER"
+      description: "Scrapes the rancher-crontab infrastructure service exporter (you must have this installed already from the catalog)."
+      label: "Scrape Rancher Crontab Exporter"
+      required: false
+      type: boolean
+      default: false
     - variable: "SETUP_CADVISOR"
       description: "Analyzes resource usage and performance characteristics of running containers."
       label: "Setup cAdvisor"

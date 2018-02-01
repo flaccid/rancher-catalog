@@ -24,6 +24,9 @@ services:
 {{- if eq .Values.SETUP_RANCHER_EXPORTER "true"}}
       SETUP_RANCHER_EXPORTER: ${SETUP_RANCHER_EXPORTER}
 {{- end}}
+{{- if eq .Values.SETUP_RANCHER_CRONTAB_EXPORTER "true"}}
+      SETUP_RANCHER_CRONTAB_EXPORTER: ${SETUP_RANCHER_CRONTAB_EXPORTER}
+{{- end}}
     labels:
       io.rancher.container.pull_image: always
 
