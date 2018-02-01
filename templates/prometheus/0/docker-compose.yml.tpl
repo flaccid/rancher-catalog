@@ -17,6 +17,10 @@ services:
     command:
     - -backend
     - rancher
+    environment:
+{{- if eq .Values.SETUP_RANCHER_EXPORTER "true"}}
+      SETUP_NODE_EXPORTER: ${SETUP_RANCHER_EXPORTER}
+{{- end}}
     labels:
       io.rancher.container.pull_image: always
 
