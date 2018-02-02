@@ -33,7 +33,7 @@ services:
 {{- if eq .Values.SETUP_GRAFANA "true"}}
   grafana:
     # we need v5 (unreleased) to configure datasources by ini
-    image: grafana/grafana:latest
+    image: flaccid/grafana:latest
     stdin_open: true
     tty: true
     labels:
