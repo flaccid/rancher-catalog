@@ -1,0 +1,5 @@
+name: "Grafana"
+description: |
+  Data visualization & Monitoring with support for Graphite, InfluxDB, Prometheus, Elasticsearch and many more databases.
+version: "v5-alpha"
+category: Monitoring
