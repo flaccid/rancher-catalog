@@ -1,7 +1,20 @@
 version: '2'
 services:
+  lb:
+    image: rancher/lb-service-haproxy:v0.7.15
+    ports:
+    - ${PROMETHEUS_PUBLIC_LB_PORT}:${PROMETHEUS_PUBLIC_LB_PORT}/tcp
+    labels:
+      io.rancher.container.agent.role: environmentAdmin,agent
+      io.rancher.container.agent_service.drain_provider: 'true'
+      io.rancher.container.create_agent: 'true'
+{{- if eq .Values.SOFT_AFFINITY_SCHEDULING "true"}}
+      io.rancher.scheduler.affinity:host_label_soft: ${PROMETHEUS_LB_HOST_LABEL}
+{{- else}}
+      io.rancher.scheduler.affinity:host_label_soft: ${PROMETHEUS_LB_HOST_LABEL}
+{{- end}}
   prometheus:
-    image: prom/prometheus:v2.1.0
+    image: ${PROMETHEUS_DOCKER_IMAGE}
     stdin_open: true
     tty: true
     volumes_from:
@@ -9,6 +22,11 @@ services:
     labels:
       io.rancher.container.pull_image: always
       io.rancher.sidekicks: prometheus-conf
+{{- if eq .Values.SOFT_AFFINITY_SCHEDULING "true"}}
+      io.rancher.scheduler.affinity:host_label_soft: ${PROMETHEUS_SERVER_HOST_LABEL}
+{{- else}}
+      io.rancher.scheduler.affinity:host_label: ${PROMETHEUS_SERVER_HOST_LABEL}
+{{- end}}
   prometheus-conf:
     image: flaccid/prometheus-conf:latest
     stdin_open: true
@@ -26,7 +44,9 @@ services:
 {{- end}}
 {{- if eq .Values.SETUP_RANCHER_CRONTAB_EXPORTER "true"}}
       SETUP_RANCHER_CRONTAB_EXPORTER: ${SETUP_RANCHER_CRONTAB_EXPORTER}
-{{- end}}
+{{- end
+    volumes:
+      - /etc/prometheus
     labels:
       io.rancher.container.pull_image: always
 
