@@ -12,24 +12,39 @@ catalog:
       required: true
       default: 3000
       type: "int"
+    - variable: GRAFANA_DOCKER_IMAGE
+      label: "Grafana Docker Image"
+      description: "Docker image to use for Grafana."
+      default: 'flaccid/grafana:latest'
+      required: true
+      type: string
+
     - variable: GRAFANA_DATA_RANCHER_NFS_ENABLED
       label: Enable Rancher NFS
-      description: Whether to use the Rancher NFS driver for Grafana data.
+      description: Whether to use the Rancher NFS driver for Grafana data (Rancher NFS must be previously deployed from the catalog).
       required: false
       default: false
       type: boolean
+    - variable: SOFT_AFFINITY_SCHEDULING
+      label: Soft Affinity Scheduling
+      description: Whether to use soft host affinity scheduling with Rancher.
+      required: false
+      default: true
+      type: boolean
+
     - variable: GRAFANA_LB_HOST_LABEL
       label: Load Balancer Host Label
       description: Host label (soft affinity) for scheduling of the load balancer service.
       required: true
-      default: "public=true"
+      default: "tier=public"
       type: string
     - variable: GRAFANA_SERVER_HOST_LABEL
       label: Grafana Host Label
       description: Host label (soft affinity) for scheduling of the Grafana service.
       required: true
-      default: "private=true"
+      default: "tier=private"
       type: string
+
     - variable: GRAFANA_ADMIN_USER
       label: Admin Username
       description: Grafin administration user name.
@@ -40,6 +55,7 @@ catalog:
       description: "Grafana administration password (default: admin)."
       default: admin
       type: password
+
     - variable: GRAFANA_PLUGINS_INSTALL
       description: "Grafana plugins to install (comma-separated plugin-ids)."
       label: "Install Plugins"
@@ -51,6 +67,7 @@ catalog:
       description: A security key for signing.
       type: password
       required: true
+
     - variable: PROMETHEUS_DATASOURCE_ENABLED
       label: Enable Prometheus Datasource
       description: Enables and sets up the Prometheus data source.
@@ -63,6 +80,7 @@ catalog:
       required: false
       default: proxy
       type: string
+
     - variable: PROMETHEUS_URL
       label: Prometheus URL
       description: The URL to connect to Prometheus with.

@@ -7,12 +7,16 @@ volumes:
 {{- end}}
 services:
   grafana:
-    image: flaccid/grafana:latest
+    image: ${GRAFANA_DOCKER_IMAGE}
     stdin_open: true
     tty: true
     labels:
       io.rancher.container.pull_image: always
+{{- if eq .Values.SOFT_AFFINITY_SCHEDULING "true"}}
       io.rancher.scheduler.affinity:host_label_soft: ${GRAFANA_SERVER_HOST_LABEL}
+{{- else}}
+      io.rancher.scheduler.affinity:host_label: ${GRAFANA_SERVER_HOST_LABEL}
+{{- end}}
     environment:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
@@ -33,4 +37,8 @@ services:
       io.rancher.container.agent.role: environmentAdmin,agent
       io.rancher.container.agent_service.drain_provider: 'true'
       io.rancher.container.create_agent: 'true'
+{{- if eq .Values.SOFT_AFFINITY_SCHEDULING "true"}}
       io.rancher.scheduler.affinity:host_label_soft: ${GRAFANA_LB_HOST_LABEL}
+{{- else}}
+      io.rancher.scheduler.affinity:host_label_soft: ${GRAFANA_LB_HOST_LABEL}
+{{- end}}
