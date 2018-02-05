@@ -1,6 +1,6 @@
 version: '2'
 volumes:
-  ${GRAFANA_DATA_VOLUME_NAME}:
+  grafana-data:
 {{- if eq .Values.GRAFANA_DATA_RANCHER_NFS_ENABLED "true"}}
     external: true
     driver: rancher-nfs

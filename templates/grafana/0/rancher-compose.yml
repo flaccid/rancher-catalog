@@ -30,30 +30,18 @@ catalog:
       default: admin
       type: password
 
-    - variable: GRAFANA_DATA_VOLUME_NAME
-      label: Data Volume Name
-      description: Name of the data volume for Grafana.
-      required: true
-      default: grafana-data
-      type: string
     - variable: GRAFANA_DATA_RANCHER_NFS_ENABLED
       label: Enable Rancher NFS
       description: Whether to use the Rancher NFS driver for Grafana data (Rancher NFS must be previously deployed from the catalog).
       required: false
       default: false
       type: boolean
-
     - variable: GRAFANA_PLUGINS_INSTALL
       description: "Grafana plugins to install (comma-separated plugin-ids)."
       label: "Install Plugins"
       required: false
       default: "grafana-clock-panel"
       type: "string"
-    - variable: GRAFANA_SECURITY_SECRET_KEY
-      label: Grafana Signing Security Key
-      description: A security key for signing.
-      type: password
-      required: true
 
     - variable: GRAFANA_LB_HOST_LABEL
       label: Load Balancer Host Label
@@ -74,19 +62,25 @@ catalog:
       required: false
       default: true
       type: boolean
+    - variable: GRAFANA_SECURITY_SECRET_KEY
+      label: Grafana Signing Security Key
+      description: A security key for signing.
+      type: password
+      required: true
+
     - variable: PROMETHEUS_DATASOURCE_ENABLED
       label: Enable Prometheus Datasource
       description: Enables and sets up the Prometheus data source.
       required: false
       default: false
       type: boolean
-
     - variable: PROMETHEUS_ACCESS_MODE
       label: Prometheus Access Mode
       description: Access Prometheus direct or via proxy.
       required: false
       default: proxy
       type: string
+
     - variable: PROMETHEUS_URL
       label: Prometheus URL
       description: The URL to connect to Prometheus with.
