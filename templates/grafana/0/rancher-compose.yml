@@ -24,21 +24,21 @@ catalog:
       required: true
       default: "private=true"
       type: string
-    - variable: GRAFANA_ADMIN_USER
-      label: Grafana Admin Username
-      description: Grafin administration user name.
-      default: admin
-      type: string
-    - variable: GRAFANA_ADMIN_PASSWORD
-      label: Grafana Admin Username
-      description: Grafin administration user name.
-      default: admin
-      type: string
     - variable: GRAFANA_SECURITY_SECRET_KEY
       label: Grafana Signing Security Key
       description: A security key for signing.
       type: password
       required: true
+    - variable: GRAFANA_ADMIN_USER
+      label: Admin Username
+      description: Grafin administration user name.
+      default: admin
+      type: string
+    - variable: GRAFANA_ADMIN_PASSWORD
+      label: Admin Password
+      description: Grafin administration password.
+      default: admin
+      type: string
     - variable: GRAFANA_PLUGINS_INSTALL
       description: "Grafana plugins to install (comma-separated plugin-ids)."
       label: "Install Plugins"
