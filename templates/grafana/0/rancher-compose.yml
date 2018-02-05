@@ -24,6 +24,45 @@ catalog:
       required: true
       default: "private=true"
       type: string
+    - variable: GRAFANA_ADMIN_USER
+      label: Grafana Admin Username
+      description: Grafin administration user name.
+      default: admin
+      type: string
+    - variable: GRAFANA_ADMIN_PASSWORD
+      label: Grafana Admin Username
+      description: Grafin administration user name.
+      default: admin
+      type: string
+    - variable: GRAFANA_SECURITY_SECRET_KEY
+      label: Grafana Signing Security Key
+      description: A security key for signing.
+      type: password
+      required: true
+    - variable: GRAFANA_PLUGINS_INSTALL
+      description: "Grafana plugins to install (comma-separated plugin-ids)."
+      label: "Install Plugins"
+      required: false
+      default: "grafana-clock-panel"
+      type: "string"
+    - variable: PROMETHEUS_DATASOURCE_ENABLED
+      label: Enable Prometheus Datasource
+      description: Enables and sets up the Prometheus data source.
+      required: false
+      default: false
+      type: boolean
+    - variable: PROMETHEUS_ACCESS_MODE
+      label: Prometheus Access Mode
+      description: Access Prometheus direct or via proxy.
+      required: false
+      default: proxy
+      type: string
+    - variable: PROMETHEUS_URL
+      label: Prometheus URL
+      description: The URL to connect to Prometheus with.
+      required: false
+      default: http://prometheus.prometheus.rancher.internal:9090/
+      type: string
 services:
   grafana:
     scale: 1

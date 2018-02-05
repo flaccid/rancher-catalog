@@ -7,6 +7,11 @@ services:
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label_soft: ${GRAFANA_SERVER_HOST_LABEL}
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
+      GF_SECURITY_SECRET_KEY: ${GRAFANA_SECURITY_SECRET_KEY}
+      GF_INSTALL_PLUGINS: ${GRAFANA_PLUGINS_INSTALL}
   lb:
     image: rancher/lb-service-haproxy:v0.7.15
     ports:
