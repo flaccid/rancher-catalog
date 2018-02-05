@@ -46,6 +46,7 @@ services:
     stdin_open: true
     tty: true
     labels:
+      io.rancher.scheduler.global: 'true'
       io.rancher.container.pull_image: always
 {{- end}}
 
