@@ -10,7 +10,7 @@ catalog:
       description: "Public port for access to Grafana through the load balancer."
       label: "Load Balancer Public Port"
       required: true
-      default: 9000
+      default: 3000
       type: "int"
     - variable: GRAFANA_DATA_RANCHER_NFS_ENABLED
       label: Enable Rancher NFS
@@ -18,8 +18,6 @@ catalog:
       required: false
       default: false
       type: boolean
-
-
     - variable: GRAFANA_LB_HOST_LABEL
       label: Load Balancer Host Label
       description: Host label (soft affinity) for scheduling of the load balancer service.
@@ -32,8 +30,6 @@ catalog:
       required: true
       default: "private=true"
       type: string
-
-
     - variable: GRAFANA_ADMIN_USER
       label: Admin Username
       description: Grafin administration user name.
@@ -44,7 +40,6 @@ catalog:
       description: "Grafana administration password (default: admin)."
       default: admin
       type: password
-
     - variable: GRAFANA_PLUGINS_INSTALL
       description: "Grafana plugins to install (comma-separated plugin-ids)."
       label: "Install Plugins"
@@ -56,8 +51,6 @@ catalog:
       description: A security key for signing.
       type: password
       required: true
-
-
     - variable: PROMETHEUS_DATASOURCE_ENABLED
       label: Enable Prometheus Datasource
       description: Enables and sets up the Prometheus data source.
@@ -70,7 +63,6 @@ catalog:
       required: false
       default: proxy
       type: string
-
     - variable: PROMETHEUS_URL
       label: Prometheus URL
       description: The URL to connect to Prometheus with.
