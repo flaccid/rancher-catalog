@@ -1,4 +1,10 @@
 version: '2'
+volumes:
+  grafana-data:
+{{- if eq .Values.GRAFANA_DATA_RANCHER_NFS_ENABLED "true"}}
+    external: true
+    driver: rancher-nfs
+{{- end}}
 services:
   grafana:
     image: flaccid/grafana:latest
@@ -17,6 +23,8 @@ services:
       PROMETHEUS_ACCESS_MODE: ${PROMETHEUS_ACCESS_MODE}
       PROMETHEUS_URL: ${PROMETHEUS_URL}
 {{- end}}
+    volumes:
+    - grafana-data:/opt/grafana/data
   lb:
     image: rancher/lb-service-haproxy:v0.7.15
     ports:
