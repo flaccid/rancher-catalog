@@ -38,7 +38,7 @@ catalog:
       label: Admin Password
       description: Grafin administration password.
       default: admin
-      type: string
+      type: password
     - variable: GRAFANA_PLUGINS_INSTALL
       description: "Grafana plugins to install (comma-separated plugin-ids)."
       label: "Install Plugins"
