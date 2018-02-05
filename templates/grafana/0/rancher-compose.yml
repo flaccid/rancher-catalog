@@ -45,13 +45,13 @@ catalog:
 
     - variable: GRAFANA_LB_HOST_LABEL
       label: Load Balancer Host Label
-      description: Host label (soft affinity) for scheduling of the load balancer service.
+      description: Host label (soft by default) for scheduling of the load balancer service.
       required: true
       default: "tier=public"
       type: string
     - variable: GRAFANA_SERVER_HOST_LABEL
       label: Grafana Host Label
-      description: Host label (soft affinity) for scheduling of the Grafana service.
+      description: Host label (soft by default) for scheduling of the Grafana service.
       required: true
       default: "tier=private"
       type: string
