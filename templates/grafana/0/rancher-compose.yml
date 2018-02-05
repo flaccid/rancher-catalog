@@ -36,7 +36,7 @@ catalog:
       type: string
     - variable: GRAFANA_ADMIN_PASSWORD
       label: Admin Password
-      description: Grafana administration password (default: admin).
+      description: "Grafana administration password (default: admin)."
       default: admin
       type: password
     - variable: GRAFANA_PLUGINS_INSTALL
