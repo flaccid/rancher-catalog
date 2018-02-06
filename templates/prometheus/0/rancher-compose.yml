@@ -94,7 +94,7 @@ services:
         priority: 1
         protocol: http
         service: prometheus
-        source_port: 9090
+        source_port: ${PROMETHEUS_LB_PORT}
         target_port: 9090
     health_check:
       response_timeout: 2000
