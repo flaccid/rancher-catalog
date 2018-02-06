@@ -43,6 +43,7 @@ services:
     image: flaccid/prometheus-conf:latest
     stdin_open: true
     tty: true
+    # TODO: support selection of different backend?
     command:
     - -backend
     - rancher
@@ -52,6 +53,9 @@ services:
 {{- end}}
 {{- if eq .Values.SETUP_RANCHER_EXPORTER "true"}}
       SETUP_RANCHER_EXPORTER: ${SETUP_RANCHER_EXPORTER}
+{{- end}}
+{{- if eq .Values.SETUP_BLACKBOX_EXPORTER "true"}}
+      SETUP_BLACKBOX_EXPORTER: ${SETUP_BLACKBOX_EXPORTER}
 {{- end}}
 {{- if eq .Values.SETUP_RANCHER_CRONTAB_EXPORTER "true"}}
       SETUP_RANCHER_CRONTAB_EXPORTER: ${SETUP_RANCHER_CRONTAB_EXPORTER}
@@ -84,6 +88,17 @@ services:
 {{- if eq .Values.SETUP_RANCHER_EXPORTER "true"}}
   rancher-exporter:
     image: infinityworks/prometheus-rancher-exporter:v0.22.93
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.agent.role: environment
+      io.rancher.container.create_agent: true
+      io.rancher.container.pull_image: always
+{{- end}}
+
+{{- if eq .Values.SETUP_BLACKBOX_EXPORTER "true"}}
+  blackbox-exporter:
+    image: prom/blackbox-exporter:v0.11.0
     stdin_open: true
     tty: true
     labels:

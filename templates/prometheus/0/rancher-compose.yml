@@ -76,6 +76,13 @@ catalog:
       required: false
       type: boolean
       default: true
+    - variable: "SETUP_BLOCKBOX_EXPORTER"
+      description: "The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP."
+      label: "Setup Blackbox Exporter"
+      required: false
+      type: boolean
+      default: true
+
     - variable: "SETUP_RANCHER_CRONTAB_EXPORTER"
       description: "Scrapes the rancher-crontab infrastructure service exporter (you must have this installed already from the catalog)."
       label: "Scrape Rancher Crontab Exporter"
