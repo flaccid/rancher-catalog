@@ -21,7 +21,7 @@ services:
 {{- if eq .Values.SOFT_AFFINITY_SCHEDULING "true"}}
       io.rancher.scheduler.affinity:host_label_soft: ${PROMETHEUS_LB_HOST_LABEL}
 {{- else}}
-      io.rancher.scheduler.affinity:host_label_soft: ${PROMETHEUS_LB_HOST_LABEL}
+      io.rancher.scheduler.affinity:host_label: ${PROMETHEUS_LB_HOST_LABEL}
 {{- end}}
 {{- if eq .Values.PROMETHEUS_GLOBAL_LB "true"}}
       io.rancher.scheduler.global: 'true'
