@@ -24,12 +24,25 @@ catalog:
       required: true
       default: true
       type: boolean
+    - variable: PROMETHEUS_GLOBAL_LB
+      label: Enable Global LB
+      description: Whether to make the load balancer a global service.
+      required: true
+      default: false
+      type: boolean
+
     - variable: PROMETHEUS_LB_PORT
       description: "Port for access to Prometheus through the load balancer."
       label: "Load Balancer Port"
       required: true
       default: 9090
       type: "int"
+    - variable: SOFT_AFFINITY_SCHEDULING
+      label: Soft Affinity Scheduling
+      description: Whether to use soft host affinity scheduling with Rancher.
+      required: false
+      default: true
+      type: boolean
 
     - variable: PROMETHEUS_LB_HOST_LABEL
       label: Load Balancer Host Label
@@ -44,45 +57,38 @@ catalog:
       default: "tier=private"
       type: string
 
-    - variable: SOFT_AFFINITY_SCHEDULING
-      label: Soft Affinity Scheduling
-      description: Whether to use soft host affinity scheduling with Rancher.
-      required: false
-      default: true
-      type: boolean
     - variable: "SETUP_GRAFANA"
       description: "Grafana, the open platform for analytics and monitoring."
       label: "Setup Grafana"
       required: false
       type: boolean
       default: true
-
     - variable: "SETUP_CADVISOR"
       description: "Analyzes resource usage and performance characteristics of running containers."
       label: "Setup cAdvisor"
       required: false
       type: boolean
       default: true
+
     - variable: "SETUP_NODE_EXPORTER"
       description: "Prometheus exporter for machine metrics, written in Go with pluggable metric collectors."
       label: "Setup Node Exporter"
       required: false
       type: boolean
       default: true
-
     - variable: "SETUP_RANCHER_EXPORTER"
       description: "Exposes Service/Stack/Host status from the Rancher API, to a Prometheus compatible interface."
       label: "Setup Rancher Exporter"
       required: false
       type: boolean
       default: true
+
     - variable: "SETUP_BLACKBOX_EXPORTER"
       description: "The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP."
       label: "Setup Blackbox Exporter"
       required: false
       type: boolean
       default: true
-
     - variable: "SETUP_RANCHER_CRONTAB_EXPORTER"
       description: "Scrapes the rancher-crontab infrastructure service exporter (you must have this installed already from the catalog)."
       label: "Scrape Rancher Crontab Exporter"

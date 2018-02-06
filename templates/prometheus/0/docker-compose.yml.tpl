@@ -23,6 +23,9 @@ services:
 {{- else}}
       io.rancher.scheduler.affinity:host_label_soft: ${PROMETHEUS_LB_HOST_LABEL}
 {{- end}}
+{{- if eq .Values.PROMETHEUS_GLOBAL_LB "true"}}
+      io.rancher.scheduler.global: 'true'
+{{- end}}
   prometheus:
     image: ${PROMETHEUS_DOCKER_IMAGE}
     command:
