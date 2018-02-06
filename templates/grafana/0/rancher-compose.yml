@@ -62,6 +62,13 @@ catalog:
       required: false
       default: true
       type: boolean
+
+    - variable: GRAFANA_GLOBAL_LB
+      label: Enable Global LB
+      description: Whether to make the load balancer a global service.
+      required: true
+      default: false
+      type: boolean
     - variable: GRAFANA_SECURITY_SECRET_KEY
       label: Grafana Signing Security Key
       description: A security key for signing.

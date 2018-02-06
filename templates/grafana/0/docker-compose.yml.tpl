@@ -42,3 +42,6 @@ services:
 {{- else}}
       io.rancher.scheduler.affinity:host_label_soft: ${GRAFANA_LB_HOST_LABEL}
 {{- end}}
+{{- if eq .Values.GRAFANA_GLOBAL_LB "true"}}
+      io.rancher.scheduler.global: 'true'
+{{- end}}
