@@ -6,6 +6,11 @@ services:
     tty: true
     labels:
       io.rancher.container.pull_image: always
+{{- if eq .Values.SOFT_AFFINITY_SCHEDULING "true"}}
+      io.rancher.scheduler.affinity:host_label_soft: ${REDIRECTOR_HOST_LABEL}
+{{- else}}
+      io.rancher.scheduler.affinity:host_label: ${REDIRECTOR_HOST_LABEL}
+{{- end}}
   lb:
     image: rancher/lb-service-haproxy:v0.7.15
 {{- if eq .Values.PUBLIC_LB "true"}}
@@ -19,6 +24,11 @@ services:
       io.rancher.container.agent.role: environmentAdmin,agent
       io.rancher.container.agent_service.drain_provider: 'true'
       io.rancher.container.create_agent: 'true'
+{{- if eq .Values.SOFT_AFFINITY_SCHEDULING "true"}}
+      io.rancher.scheduler.affinity:host_label_soft: ${LB_HOST_LABEL}
+{{- else}}
+      io.rancher.scheduler.affinity:host_label: ${LB_HOST_LABEL}
+{{- end}}
 {{- if eq .Values.GLOBAL_LB "true"}}
       io.rancher.scheduler.global: 'true'
 {{- end}}

@@ -17,12 +17,30 @@ catalog:
       required: true
       default: false
       type: boolean
+    - variable: LB_HOST_LABEL
+      label: Load Balancer Host Label
+      description: Host label (soft affinity is default) for scheduling of the load balancer service.
+      required: true
+      default: "tier=public"
+      type: string
+    - variable: REDIRECTOR_HOST_LABEL
+      label: Redirector Host Label
+      description: Host label (soft affinity is default) for scheduling of the Prometheus service.
+      required: true
+      default: "tier=private"
+      type: string
     - variable: LB_PORT
       label: "Load Balancer Port"
       description: "Port for access to the redirector through the load balancer."
       required: true
       default: 80
       type: "int"
+    - variable: SOFT_AFFINITY_SCHEDULING
+      label: Soft Affinity Scheduling
+      description: Whether to use soft host affinity scheduling with Rancher.
+      required: false
+      default: true
+      type: boolean
 
 services:
   redirector:
