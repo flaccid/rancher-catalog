@@ -51,7 +51,7 @@ services:
 {{- end}}
 {{- if eq .Values.SETUP_RANCHER_CRONTAB_EXPORTER "true"}}
       SETUP_RANCHER_CRONTAB_EXPORTER: ${SETUP_RANCHER_CRONTAB_EXPORTER}
-{{- end
+{{- end}}
     volumes:
       - /etc/prometheus
     labels:
