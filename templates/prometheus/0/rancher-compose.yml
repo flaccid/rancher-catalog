@@ -76,7 +76,7 @@ catalog:
       required: false
       type: boolean
       default: true
-    - variable: "SETUP_BLOCKBOX_EXPORTER"
+    - variable: "SETUP_BLACKBOX_EXPORTER"
       description: "The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP."
       label: "Setup Blackbox Exporter"
       required: false
