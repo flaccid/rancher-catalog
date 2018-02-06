@@ -8,8 +8,12 @@ volumes:
 services:
   lb:
     image: rancher/lb-service-haproxy:v0.7.15
+{{- if eq .Values.PROMETHEUS_PUBLIC_LB "true"}}
     ports:
-    - ${PROMETHEUS_PUBLIC_LB_PORT}:${PROMETHEUS_PUBLIC_LB_PORT}/tcp
+{{- else}}
+    expose:
+    - ${PROMETHEUS_LB_PORT}:${PROMETHEUS_LB_PORT}/tcp
+{{- end}}
     labels:
       io.rancher.container.agent.role: environmentAdmin,agent
       io.rancher.container.agent_service.drain_provider: 'true'
