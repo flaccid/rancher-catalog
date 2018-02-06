@@ -14,7 +14,7 @@ catalog:
     - variable: PROMETHEUS_DOCKER_IMAGE
       label: "Prometheus Docker Image"
       description: "Docker image to use for Prometheus."
-      default: 'prom/prometheus:v2.1.0'
+      default: 'flaccid/prometheus:latest'
       required: true
       type: string
 
