@@ -1,0 +1,50 @@
+version: '2'
+catalog:
+  name: HTTP to HTTPS Redirector
+  version: 0.0.1
+  description: "A basic service that redirects arbitrary plain HTTP requests to HTTPS."
+  maintainer: "Chris Fordham <chris@fordham-nagy.id.au>"
+  questions:
+    - variable: PUBLIC_LB
+      label: Enable Public LB
+      description: Whether to expose the load balancer public or keep internal.
+      required: true
+      default: true
+      type: boolean
+    - variable: GLOBAL_LB
+      label: Enable Global LB
+      description: Whether to make the load balancer a global service.
+      required: true
+      default: false
+      type: boolean
+    - variable: LB_PORT
+      label: "Load Balancer Port"
+      description: "Port for access to the redirector through the load balancer."
+      required: true
+      default: 80
+      type: "int"
+
+services:
+  redirector:
+    scale: 2
+    start_on_create: true
+  lb:
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - hostname: ''
+        path: ''
+        priority: 1
+        protocol: http
+        service: redirector
+        source_port: ${LB_PORT}
+        target_port: 80
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000

@@ -1,0 +1,5 @@
+name: HTTP to HTTPS Redirector
+description: |
+  A basic service that redirects arbitrary plain HTTP requests to HTTPS.
+version: 0.0.1
+category: Networking
