@@ -12,8 +12,8 @@ services:
     ports:
 {{- else}}
     expose:
-    - ${PROMETHEUS_LB_PORT}:${PROMETHEUS_LB_PORT}/tcp
 {{- end}}
+    - ${PROMETHEUS_LB_PORT}:${PROMETHEUS_LB_PORT}/tcp
     labels:
       io.rancher.container.agent.role: environmentAdmin,agent
       io.rancher.container.agent_service.drain_provider: 'true'
