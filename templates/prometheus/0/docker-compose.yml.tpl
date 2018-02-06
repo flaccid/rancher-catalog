@@ -1,4 +1,10 @@
 version: '2'
+volumes:
+  prometheus-data:
+{{- if eq .Values.PROMETHEUS_DATA_RANCHER_NFS_ENABLED "true"}}
+    external: true
+    driver: rancher-nfs
+{{- end}}
 services:
   lb:
     image: rancher/lb-service-haproxy:v0.7.15
@@ -27,6 +33,8 @@ services:
 {{- else}}
       io.rancher.scheduler.affinity:host_label: ${PROMETHEUS_SERVER_HOST_LABEL}
 {{- end}}
+    volumes:
+      - prometheus-data:/prometheus
   prometheus-conf:
     image: flaccid/prometheus-conf:latest
     stdin_open: true

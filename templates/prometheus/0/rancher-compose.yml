@@ -18,6 +18,19 @@ catalog:
       required: true
       type: string
 
+    - variable: PROMETHEUS_DATA_RANCHER_NFS_ENABLED
+      label: Enable Rancher NFS
+      description: Whether to use the Rancher NFS driver for Prometheus data (Rancher NFS must be previously deployed from the catalog).
+      required: false
+      default: false
+      type: boolean
+    - variable: SOFT_AFFINITY_SCHEDULING
+      label: Soft Affinity Scheduling
+      description: Whether to use soft host affinity scheduling with Rancher.
+      required: false
+      default: true
+      type: boolean
+
     - variable: PROMETHEUS_LB_HOST_LABEL
       label: Load Balancer Host Label
       description: Host label (soft affinity) for scheduling of the load balancer service.
@@ -31,15 +44,15 @@ catalog:
       default: "tier=private"
       type: string
 
-    - variable: SOFT_AFFINITY_SCHEDULING
-      label: Soft Affinity Scheduling
-      description: Whether to use soft host affinity scheduling with Rancher.
-      required: false
-      default: true
-      type: boolean
     - variable: "SETUP_GRAFANA"
       description: "Grafana, the open platform for analytics and monitoring."
       label: "Setup Grafana"
+      required: false
+      type: boolean
+      default: true
+    - variable: "SETUP_CADVISOR"
+      description: "Analyzes resource usage and performance characteristics of running containers."
+      label: "Setup cAdvisor"
       required: false
       type: boolean
       default: true
@@ -57,12 +70,6 @@ catalog:
       type: boolean
       default: true
 
-    - variable: "SETUP_CADVISOR"
-      description: "Analyzes resource usage and performance characteristics of running containers."
-      label: "Setup cAdvisor"
-      required: false
-      type: boolean
-      default: true
     - variable: "SETUP_RANCHER_CRONTAB_EXPORTER"
       description: "Scrapes the rancher-crontab infrastructure service exporter (you must have this installed already from the catalog)."
       label: "Scrape Rancher Crontab Exporter"
