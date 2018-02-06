@@ -46,13 +46,13 @@ catalog:
 
     - variable: PROMETHEUS_LB_HOST_LABEL
       label: Load Balancer Host Label
-      description: Host label (soft affinity) for scheduling of the load balancer service.
+      description: Host label (soft affinity is default) for scheduling of the load balancer service.
       required: true
       default: "tier=public"
       type: string
     - variable: PROMETHEUS_SERVER_HOST_LABEL
       label: Grafana Host Label
-      description: Host label (soft affinity) for scheduling of the Prometheus service.
+      description: Host label (soft affinity is default) for scheduling of the Prometheus service.
       required: true
       default: "tier=private"
       type: string
