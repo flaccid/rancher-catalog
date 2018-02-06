@@ -39,7 +39,6 @@ services:
     image: flaccid/prometheus-conf:latest
     stdin_open: true
     tty: true
-    # TODO: user can choose backend
     command:
     - -backend
     - rancher
