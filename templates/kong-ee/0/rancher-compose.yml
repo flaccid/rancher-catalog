@@ -4,14 +4,14 @@ catalog:
   version: "0.11.0.3"
   description: 'The World’s Most Popular Open Source Microservice API Gateway.'
   questions:
-    - variable: LICENSE_DATA
-      label: 'License Data'
-      description: 'The license data provided by Mashape (JSON format).'
+    - variable: KONG_LICENSE_DATA
+      label: 'Kong License Data'
+      description: 'The Kong EE license data provided by Mashape (JSON format).'
       type: string
       required: true
     - variable: LB_ACCESS
       label: 'Load Balancer Access'
-      description: 'Expose the load balancer publicly or keep internal (use your own reversy proxy or edit after).'
+      description: 'Expose the Kong load balancer publicly or keep internal (use your own reversy proxy or edit after).'
       type: enum
       options:
         - Internal
