@@ -1,7 +1,7 @@
 version: '2'
 services:
   lb:
-    image: rancher/lb-service-haproxy:v0.7.9
+    image: rancher/lb-service-haproxy:v0.7.15
 {{- if eq .Values.LB_ACCESS "Public"}}
     ports:
 {{- end}}
