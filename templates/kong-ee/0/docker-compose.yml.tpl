@@ -1,19 +1,5 @@
 version: '2'
 services:
-  migrations:
-    image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:0.30-alpine
-    environment:
-      KONG_PG_HOST: db
-      KONG_LICENSE_DATA: '${KONG_LICENSE_DATA}'
-    stdin_open: true
-    tty: true
-    command:
-    - kong
-    - migrations
-    - up
-    labels:
-      io.rancher.container.pull_image: always
-      io.rancher.container.start_once: 'true'
   lb:
     image: rancher/lb-service-haproxy:v0.7.9
 {{- if eq .Values.LB_ACCESS "Public"}}
@@ -31,15 +17,6 @@ services:
     labels:
       io.rancher.container.agent.role: environmentAdmin
       io.rancher.container.create_agent: 'true'
-  db:
-    image: postgres:9.5
-    environment:
-      POSTGRES_DB: kong
-      POSTGRES_USER: kong
-    stdin_open: true
-    tty: true
-    labels:
-      io.rancher.container.pull_image: always
   kong-ee:
     image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:0.30-alpine
     environment:
@@ -54,5 +31,30 @@ services:
     tty: true
     links:
     - db:db
+    labels:
+      io.rancher.container.pull_image: always
+  migrations:
+    image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:0.30-alpine
+    environment:
+      KONG_PG_HOST: db
+      KONG_LICENSE_DATA: '${KONG_LICENSE_DATA}'
+    stdin_open: true
+    tty: true
+    command:
+    - kong
+    - migrations
+    - up
+    links:
+    - db:db
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
+  db:
+    image: postgres:9.5
+    environment:
+      POSTGRES_DB: kong
+      POSTGRES_USER: kong
+    stdin_open: true
+    tty: true
     labels:
       io.rancher.container.pull_image: always

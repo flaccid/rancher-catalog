@@ -19,9 +19,6 @@ catalog:
       required: true
       default: Internal
 services:
-  migrations:
-    scale: 1
-    start_on_create: true
   lb:
     scale: 1
     start_on_create: true
@@ -67,9 +64,12 @@ services:
       interval: 2000
       strategy: recreate
       reinitializing_timeout: 60000
-  db:
+  kong-ee:
     scale: 1
     start_on_create: true
-  kong-ee:
+  migrations:
+    scale: 1
+    start_on_create: true
+  db:
     scale: 1
     start_on_create: true
