@@ -50,6 +50,8 @@ services:
     start_on_create: true
     lb_config:
       certs: []
+      # a simple health, handy for another reverse proxy in front
+      config: monitor-uri /health
       port_rules:
       - hostname: ''
         path: ''
