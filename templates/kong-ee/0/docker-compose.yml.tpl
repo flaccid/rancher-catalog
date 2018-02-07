@@ -1,7 +1,7 @@
 version: '2'
 services:
   migrations:
-    image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:0.11.0.3-alpine
+    image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:0.30-alpine
     environment:
       KONG_PG_HOST: db
       KONG_LICENSE_DATA: '${KONG_LICENSE_DATA}'
@@ -41,7 +41,7 @@ services:
     labels:
       io.rancher.container.pull_image: always
   kong-ee:
-    image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:0.11.0.3-alpine
+    image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:0.30-alpine
     environment:
       KONG_ADMIN_ACCESS_LOG: /dev/stdout
       KONG_ADMIN_ERROR_LOG: /dev/stderr
