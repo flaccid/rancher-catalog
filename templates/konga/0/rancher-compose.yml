@@ -3,6 +3,63 @@ catalog:
   name: "Konga"
   version: "0.0.1"
   description: 'More than just another GUI to Kong Admin API.'
+  questions:
+    - variable: DB_ADAPTER
+      label: 'Database Adapter'
+      description: 'The database adapter for Konga.'
+      type: enum
+      options:
+        - postgres
+        - mysql
+      required: true
+      default: postgres
+    - variable: DB_HOST
+      label: 'Database Host'
+      description: 'The database hostname or IP.'
+      type: string
+      required: true
+      default: db-konga
+    - variable: DB_PORT
+      label: 'Database Port'
+      description: 'The database port.'
+      type: string
+      required: true
+      default: 5432
+    - variable: DB_USER
+      label: 'Database User'
+      description: 'The database username.'
+      type: string
+      required: true
+      default: konga
+    - variable: DB_PASS
+      label: 'Database User'
+      description: 'The database username.'
+      type: string
+      required: true
+      default: konga
+    - variable: DB_DATABASE
+      label: 'Database Name'
+      description: 'The database name or schema.'
+      type: string
+      required: true
+      default: konga
+    - variable: DB_SSL
+      label: 'Use SSL'
+      description: 'Use SSL for database connection.'
+      type: enum
+      options:
+        - true
+        - false
+      required: true
+    - variable: NODE_ENV
+      label: 'Node Environment'
+      description: 'The environment level to use.'
+      type: enum
+      options:
+        - production
+        - development
+      default: production
+      required: true
 services:
   konga:
     scale: 1
