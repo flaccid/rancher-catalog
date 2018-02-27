@@ -12,7 +12,7 @@ services:
      DB_PORT:     ${DB_PORT}
      DB_USER:     '${DB_USER}'
      DB_PASSWORD: '${DB_PASS}'
-     DB_DATABASE: '${KONGA_DB_NAME}'
+     DB_DATABASE: '${DB_DATABASE}'
      DB_SSL:      '${DB_SSL}'
      NODE_ENV:    '${NODE_ENV}'
   lb-konga:
