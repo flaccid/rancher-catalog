@@ -7,14 +7,14 @@ services:
    labels:
      io.rancher.container.pull_image: always
    environment:
-     DB_ADAPTER:  'postgres'
-     DB_HOST:     "${DB_HOST}"
-     DB_PORT:     '5432'
-     DB_USER:     "${DB_USER}"
-     DB_PASSWORD: "${DB_PASS}"
-     DB_DATABASE: "${KONGA_DB_NAME}"
-     DB_SSL:      'true'
-     NODE_ENV:    'production'
+     DB_ADAPTER:  '${DB_ADAPTER}'
+     DB_HOST:     '${DB_HOST}'
+     DB_PORT:     ${DB_PORT}
+     DB_USER:     '${DB_USER}'
+     DB_PASSWORD: '${DB_PASS}'
+     DB_DATABASE: '${KONGA_DB_NAME}'
+     DB_SSL:      '${DB_SSL}'
+     NODE_ENV:    '${NODE_ENV}'
   lb-konga:
    image: rancher/lb-service-haproxy:v0.7.15
    ports:
