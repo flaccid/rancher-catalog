@@ -27,14 +27,14 @@ catalog:
       default: 5432
     - variable: DB_USER
       label: 'Database User'
-      description: 'The database username.'
+      description: 'The username for the Konga database.'
       type: string
       required: true
       default: konga
     - variable: DB_PASS
-      label: 'Database User'
-      description: 'The database username.'
-      type: string
+      label: 'Database Password'
+      description: 'The password for the Konga database.'
+      type: password
       required: true
       default: konga
     - variable: DB_DATABASE
