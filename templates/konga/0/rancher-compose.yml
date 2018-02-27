@@ -25,6 +25,12 @@ catalog:
       type: string
       required: true
       default: 5432
+    - variable: DB_DATABASE
+      label: 'Database Name'
+      description: 'The database name or schema.'
+      type: string
+      required: true
+      default: konga
     - variable: DB_USER
       label: 'Database User'
       description: 'The username for the Konga database.'
@@ -35,12 +41,6 @@ catalog:
       label: 'Database Password'
       description: 'The password for the Konga database.'
       type: password
-      required: true
-      default: konga
-    - variable: DB_DATABASE
-      label: 'Database Name'
-      description: 'The database name or schema.'
-      type: string
       required: true
       default: konga
     - variable: DB_SSL
