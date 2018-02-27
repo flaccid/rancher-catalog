@@ -1,0 +1,5 @@
+name: Konga
+description: |
+    More than just another GUI to Kong Admin API.
+version: 0.0.1
+category: API Gateways
