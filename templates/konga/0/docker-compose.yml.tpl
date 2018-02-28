@@ -15,6 +15,9 @@ services:
      DB_DATABASE: '${DB_DATABASE}'
      DB_SSL:      '${DB_SSL}'
      NODE_ENV:    '${NODE_ENV}'
+{{- if .Values.DOCKER_ENTRYPOINT}}
+   entrypoint: '${DOCKER_ENTRYPOINT}'
+{{- end}}
   lb:
    image: rancher/lb-service-haproxy:v0.7.15
    ports:

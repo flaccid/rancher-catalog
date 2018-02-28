@@ -60,6 +60,10 @@ catalog:
         - development
       default: production
       required: true
+    - variable: DOCKER_ENTRYPOINT
+      label: 'Docker Entrypoint'
+      description: 'Optional, override of the docker entrypoint.'
+      type: string
 services:
   konga:
     scale: 1
