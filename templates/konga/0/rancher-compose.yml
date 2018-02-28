@@ -60,6 +60,12 @@ catalog:
         - development
       default: production
       required: true
+    - variable: KONGA_DOCKER_IMAGE_TAG
+      label: 'Docker Image'
+      description: 'The docker image to use for Konga.'
+      type: string
+      default: 'pantsel/konga:latest'
+      required: true
     - variable: DOCKER_ENTRYPOINT
       label: 'Docker Entrypoint'
       description: 'Optional, override of the docker entrypoint.'

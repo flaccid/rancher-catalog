@@ -1,7 +1,7 @@
 version: '2'
 services:
   konga:
-   image: pantsel/konga:0.9.0
+   image: ${KONGA_DOCKER_IMAGE_TAG}
    stdin_open: true
    tty: true
    labels:
