@@ -116,6 +116,8 @@ services:
       io.rancher.container.pull_image: always
 {{- end}}
 
+# recently, https://github.com/google/cadvisor/blob/master/container/containerd/client.go#L69
+# wants /var/run/containerd/containerd.sock
 {{- if eq .Values.SETUP_CADVISOR "true"}}
   cadvisor:
     image: google/cadvisor:v0.29.0
@@ -128,4 +130,5 @@ services:
       - "/var/run:/var/run:rw"
       - "/sys:/sys:ro"
       - "/var/lib/docker/:/var/lib/docker:ro"
+      - "/var/run/docker/libcontainerd/docker-containerd.sock:/var/run/containerd/containerd.sock:ro"
 {{- end}}
